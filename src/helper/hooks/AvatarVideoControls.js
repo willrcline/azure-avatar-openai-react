@@ -1,10 +1,12 @@
 import { useContext, useEffect, useRef } from "react";
-import { createAvatarSynthesizer, createWebRTCConnection } from "./Utility";
-import { avatarAppConfig } from "./config";
-import { AvatarContext } from "./Avatar.jsx";
+import { createAvatarSynthesizer, createWebRTCConnection } from "../../components/Utility.js";
+import { avatarAppConfig } from "../../components/config.js";
+import { AvatarContext } from "../../components/Avatar.jsx";
 
-    const StartSession = () => {
-        const {setAvatarSynthesizer, myAvatarAudioEleRef, myAvatarVideoEleRef} = useContext(AvatarContext);
+function useStartSession() {
+    const {setSessionStarted, setAvatarSynthesizer, myAvatarAudioEleRef, myAvatarVideoEleRef} = useContext(AvatarContext);
+
+    const startSession = () => {
 
         
         const handleOnTrack = (event) => {
@@ -34,12 +36,6 @@ import { AvatarContext } from "./Avatar.jsx";
             }
         };
 
-        const avatarLoaded = useRef(false);
-        
-        useEffect(() => {
-            return () => {
-            if (avatarLoaded.current === false) {
-                avatarLoaded.current = true;
                 var iceUrl = avatarAppConfig.iceUrl
                 var iceUsername = avatarAppConfig.iceUsername
                 var iceCredential = avatarAppConfig.iceCredential
@@ -66,7 +62,7 @@ import { AvatarContext } from "./Avatar.jsx";
             
 
             avatarSynthesizer.startAvatarAsync(peerConnection).then((r) => {
-                // setSessionStarted(true);
+                setSessionStarted(true);
                 console.log("[" + (new Date()).toISOString() + "] Avatar started.")
 
             }).catch(
@@ -75,30 +71,27 @@ import { AvatarContext } from "./Avatar.jsx";
                 }
             );
             
+        }
 
-            }
+    return startSession
+}
 
-        }  
-        }, []);
+function useStopSession() {
+    const {avatarSynthesizer} = useContext(AvatarContext);
 
-            return null
-
-    }
-
-    const StopSession = () => {
-        // const {avatarSynthesizer} = useContext(AvatarContext);
-
-        // try{
-        //   //Stop speaking
-        //   avatarSynthesizer.stopSpeakingAsync().then(() => {
-        //     console.log("[" + (new Date()).toISOString() + "] Stop speaking request sent.")
-        //     // Close the synthesizer
-        //     avatarSynthesizer.close();
-        //   }).catch();
-        // }catch(e) {
-        // }
+    const stopSession = () => {
+        try{
+          //Stop speaking
+          avatarSynthesizer.stopSpeakingAsync().then(() => {
+            console.log("[" + (new Date()).toISOString() + "] Stop speaking request sent.")
+            // Close the synthesizer
+            avatarSynthesizer.close();
+          }).catch();
+        }catch(e) {
+        }
 
         return null
       }
-    
-export { StartSession, StopSession }
+}
+
+export { useStartSession, useStopSession }

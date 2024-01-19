@@ -1,8 +1,15 @@
-import { StartSession } from "./AvatarVideoControls.jsx";
+// import { useState } from "react";
+import { useContext, useState } from "react";
+import { createAvatarSynthesizer, createWebRTCConnection } from "./Utility";
+import { avatarAppConfig } from "./config";
+import { AvatarContext } from "./Avatar.jsx";
+import Colors from "../helper/Colors.js";
+import { useSpeakSelectedText } from "../helper/hooks/useSpeakSelectedText";
+import { useStartSession } from "../helper/hooks/AvatarVideoControls.js";
 
 
-const AvatarVideo = ({setAvatarSynthesizer, myAvatarAudioEleRef, myAvatarVideoEleRef}) => {
-
+const AvatarVideo = () => {
+    const {myAvatarAudioEleRef, myAvatarVideoEleRef} = useContext(AvatarContext);
 
     return (
     <div style={styles.myAvatarVideoContainer}>
@@ -11,44 +18,34 @@ const AvatarVideo = ({setAvatarSynthesizer, myAvatarAudioEleRef, myAvatarVideoEl
             <video style={styles.video} ref={myAvatarVideoEleRef}>
 
             </video>
-            {/* <Player style={styles.video} ref={myAvatarVideoEleRef}>
-            </Player> */}
 
             <audio ref={myAvatarAudioEleRef}>
 
             </audio>
         </div>
-        <div className="myButtonGroup d-flex justify-content-around">
-            <button className="btn btn-success"
-                onClick={StartSession}>
-                Connect
-            </button>
-            {/* <button className="btn btn-danger"
-                onClick={stopSession}>
-                Disconnect
-            </button> */}
+           
         </div>
-    </div>
     )
 }
 
 const styles = {
     myAvatarVideoContainer: {
-        height: '26rem',
-        width: '30rem',
+        marginTop: '4rem',
+        height: '30rem',
+        width: '26rem',
         borderRadius: '8px',
-        padding: '3rem',
+        // padding: '3rem',
     },
     myVideoDiv: {
-        width: '26rem',
         height: '30rem',
+        width: '26rem',
         marginBottom: '2rem',
     },
     video: {
         margin: '0px 0px 20px 0px',
         // paddingRight: '5rem',
-        width: '26rem',
         height: '30rem',
+        width: '26rem',
         borderRadius: '8px',
     },
 }

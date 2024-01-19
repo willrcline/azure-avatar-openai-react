@@ -5,9 +5,9 @@ export const avatarAppConfig = {
     voiceName : "en-US-JennyNeural",
     avatarCharacter : "lisa",
     avatarStyle : "casual-sitting",
-    // avatarBackgroundColor : "#e8e8e8ff",
-    avatarBackgroundColor : "#ffffff",
+    avatarBackgroundColor : "#e8e8e8ff",
+    // avatarBackgroundColor : "#ffffff",
     iceUrl : "stun:relay.communication.microsoft.com:3478",
-    iceUsername : "BQAANgRlCAAB2kqaqum/xfjaeCwojMYDMnE+Zr/b/1YAAAAMARDB1GtjC91JsbwrEyt9fVrd/+01DQGBqH4W2nfjtITjP7xc3WM=",
-    iceCredential : "KJ9kHpWxJuJXp1/zVnWJ+pkxMK8="
+    iceUsername : "BQAANqjDlgAB2ky2KuaB2YfenIqBjO7un/jSVRuCiN0AAAAMARDB1GtjC91JsbwrEyt9fVrdbucERoy5oW20zzHxBODeFamqhKo=",
+    iceCredential : "bHDXYNfmE/40oRHj2wHClkFn8h4="
   }

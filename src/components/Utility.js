@@ -5,7 +5,7 @@ const cogSvcSubKey = avatarAppConfig.cogSvcSubKey
 const voiceName = avatarAppConfig.voiceName
 const avatarCharacter = avatarAppConfig.avatarCharacter
 const avatarStyle = avatarAppConfig.avatarStyle
-const avatarBackgroundColor = "#FFFFFFFF";
+const avatarBackgroundColor = avatarAppConfig.avatarBackgroundColor
 
 
 export const createWebRTCConnection = (iceServerUrl, iceServerUsername, iceServerCredential) => {
@@ -39,6 +39,7 @@ export const createAvatarSynthesizer = () => {
     const talkingAvatarStyle = avatarStyle
 
     const avatarConfig = new SpeechSDK.AvatarConfig(talkingAvatarCharacter, talkingAvatarStyle, videoFormat)
+    console.log("avatarBackgroundColor___" + avatarBackgroundColor)
     avatarConfig.backgroundColor = avatarBackgroundColor;
     let avatarSynthesizer = new SpeechSDK.AvatarSynthesizer(speechSynthesisConfig, avatarConfig)
 

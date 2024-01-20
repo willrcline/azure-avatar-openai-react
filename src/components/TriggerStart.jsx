@@ -9,6 +9,7 @@ const TriggerStart = () => {
     const {sessionStarted} = useContext(AvatarContext);
     const speakText = useSpeakSelectedText();
     const startSession = useStartSession()
+    
 
     useEffect(() => {
         if (sessionStarted) {
@@ -22,7 +23,7 @@ const TriggerStart = () => {
                 <p 
                     style = {{cursor: "pointer", color: Colors.gray, fontSize: 14, font: "Inter Variable", opacity: .3 }} 
                     onClick={() => {setClicked(true); startSession()}}>
-                    Click here to talk
+                    Click here to begin
                 </p>
             )} 
         </>

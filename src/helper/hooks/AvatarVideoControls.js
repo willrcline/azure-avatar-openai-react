@@ -62,9 +62,10 @@ function useStartSession() {
             
 
             avatarSynthesizer.startAvatarAsync(peerConnection).then((r) => {
-                setSessionStarted(true);
-                console.log("[" + (new Date()).toISOString() + "] Avatar started.")
-
+                console.log("[" + (new Date()).toISOString() + "] Avatar started.");
+                setTimeout(() => {
+                    setSessionStarted(true);
+                }, 5000);
             }).catch(
                 (error) => {
                     console.log("[" + (new Date()).toISOString() + "] Avatar failed to start. Error: " + error)

@@ -1,18 +1,26 @@
-import { useState } from "react";
-import { useRef } from "react";
+import { useState, useRef, useEffect, useContext, createContext } from "react";
 import AvatarVideo from "./AvatarVideo";
 import ChatBox from "./ChatBox";
+import TriggerStart from "./TriggerStart";
+
+export const AvatarContext = createContext(null);
 
 export const Avatar = () => {
     const [avatarSynthesizer, setAvatarSynthesizer] = useState(null);
+    const [sessionStarted, setSessionStarted] = useState(false)
     const myAvatarVideoEleRef = useRef();
     const myAvatarAudioEleRef = useRef();
 
     return(
         <div className="container" style={styles.myAvatarContainer}>
             <div style={{ display: 'flex', flexDirection: "column", alignItems: 'center' }}>
-                <AvatarVideo myAvatarAudioEleRef={myAvatarAudioEleRef} myAvatarVideoEleRef={myAvatarVideoEleRef} avatarSynthesizer={avatarSynthesizer} setAvatarSynthesizer={setAvatarSynthesizer}/>
-                <ChatBox avatarSynthesizer={avatarSynthesizer} myAvatarAudioEleRef={myAvatarAudioEleRef} />
+                <AvatarContext.Provider value={{sessionStarted, setSessionStarted, avatarSynthesizer, setAvatarSynthesizer, myAvatarAudioEleRef, myAvatarVideoEleRef}}>
+                    <div style={{display:"flex", flexDirection:"column"}}>
+                        <AvatarVideo />
+                        <TriggerStart />
+                    </div>
+                    <ChatBox />
+                </AvatarContext.Provider>
             </div>
         </div>
     )
@@ -21,7 +29,6 @@ export const Avatar = () => {
 const styles = {
     myAvatarContainer: {
         textAlign: 'center',
-        backgroundColor: '#e9ecef',
-        marginTop: '5rem',
+        // marginTop: '5rem',
     },
 }

@@ -8,7 +8,7 @@ const Footer = () => {
         <div style={{position:"fixed", bottom: 0}}>
             <div style={{display: "flex", flexDirection: "row"}}>
                 <img style={{width:"100%"}} src={bottomShadow} alt="Image 2" />
-                <img style={{width: 115, right: 20, bottom: 5, position: "absolute"}} src={plantImage} alt="Image 1" />
+                <img style={{width: 115, right: 50, bottom: 10, position: "absolute"}} src={plantImage} alt="Image 1" />
             </div>
         </div>
     );

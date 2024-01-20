@@ -2,13 +2,19 @@ import { Avatar } from './components/Avatar';
 import Footer from "./components/Footer"
 import Colors from './helper/Colors';
 import { createGlobalStyle } from 'styled-components';
+import VerticalToggle from './components/VerticalToggle';
+import { useState, useEffect } from 'react';
 
 function App() {
+const [page, setPage] = useState(0);
+
+
   return (
-    <div className="App">
+    <div styles={{overflowY: 'auto'}} onScroll={()=>{console.log("scrolled___")}}>
       <GlobalStyle/>
-        <Avatar/>
-        <Footer/>
+      <VerticalToggle page={page} setPage={setPage} />
+      <Avatar/>
+      <Footer/>
     </div>
   );
 }
@@ -16,6 +22,7 @@ function App() {
 const GlobalStyle = createGlobalStyle`
   body {
     background-color: ${Colors.offWhite}; /* Your desired color */
+    overflowY: 'auto'
   }
 `;
 

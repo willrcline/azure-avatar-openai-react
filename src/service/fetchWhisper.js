@@ -1,5 +1,5 @@
 import { getFunctions, httpsCallable } from 'firebase/functions';
-import app from "./firebase/firebaseConfig.js"
+import app from "../firebase/firebaseConfig.js"
 
 const fetchWhisper = async (fileName) => {
     const functions = getFunctions(app);

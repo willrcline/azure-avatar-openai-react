@@ -1,5 +1,5 @@
 import { getFunctions, httpsCallable } from 'firebase/functions';
-import app from "./firebase/firebaseConfig.js"
+import app from "../firebase/firebaseConfig.js"
 
 const fetchCorrectedTranscript = async (data) => {
    const functions = getFunctions(app);
@@ -7,7 +7,7 @@ const fetchCorrectedTranscript = async (data) => {
 
     try {
       const gptResponse = await correctedTranscriptFunction(data);
-      correctedTranscript = gptResponse.data
+      let correctedTranscript = gptResponse.data
       return removeQuotes(correctedTranscript);
     } catch (error) {
       console.error('Error calling function:', error);

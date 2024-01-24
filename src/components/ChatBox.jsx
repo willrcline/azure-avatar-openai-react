@@ -4,6 +4,8 @@ import fetchOpenAi from "../service/fetchOpenAi";
 import { assistantPrompt } from "../helper/promptFactory";
 import { AvatarContext } from "./Avatar.jsx";
 import { useSpeakSelectedText } from "../helper/hooks/useSpeakSelectedText";
+import Colors from "../helper/Colors.js";
+import ChatSuggestions from "./ChatSuggestions.jsx";
 
 const ChatBox = () => {
     const [mySpeechText, setMySpeechText] = useState("");
@@ -36,42 +38,18 @@ const ChatBox = () => {
     }  
 
     
-    // const speakSelectedText = (text) => {
-
-    //     //Start speaking the text
-    //     const audioPlayer = myAvatarAudioEleRef.current;
-    //     console.log("Audio muted status ",audioPlayer.muted);
-    //     audioPlayer.muted = false;        
-    //     avatarSynthesizer.speakTextAsync(text).then(
-    //         (result) => {
-    //             if (result.reason === SpeechSDK.ResultReason.SynthesizingAudioCompleted) {
-    //                 console.log("Speech and avatar synthesized to video stream.")
-    //             } else {
-    //                 console.log("Unable to speak. Result ID: " + result.resultId)
-    //                 if (result.reason === SpeechSDK.ResultReason.Canceled) {
-    //                     let cancellationDetails = SpeechSDK.CancellationDetails.fromResult(result)
-    //                     console.log(cancellationDetails.reason)
-    //                     if (cancellationDetails.reason === SpeechSDK.CancellationReason.Error) {
-    //                         console.log(cancellationDetails.errorDetails)
-    //                     }
-    //                 }
-    //             }
-    //     }).catch((error) => {
-    //         console.log(error)
-    //         avatarSynthesizer.close()
-    //     });
-    // }
-    
     return (
             <div style={styles.myTextAreaContainer}>
-                
-                <textarea style={styles.myTextArea} value={mySpeechText} onChange={handleSpeechText}>
+                <ChatSuggestions />
+                <div style={{position: "relative"}}>
+                    <textarea style={styles.myTextArea} value={mySpeechText} onChange={handleSpeechText}>
 
-                </textarea>
-                <div className="myButtonGroup d-flex justify-content-around">
-                    <button className="btn btn-success" onClick={handleStartSpeak}>
+                    </textarea>
+                    <button style={styles.sendButton} onClick={handleStartSpeak}>
                         Speak
                     </button>
+                </div>
+                <div className="myButtonGroup d-flex justify-content-around">
                     <button className="btn btn-warning" onClick={stopSpeaking}>
                         Stop
                     </button>
@@ -86,10 +64,18 @@ const styles = {
         marginTop: '5rem',
     },
     myTextArea: {
-        height: '11rem',
+        height: '4rem',
         width: '35rem',
-        borderRadius: '5px',
-        borderColor: 'grey',
+        borderRadius: '25px',
+        padding: '10px',
+        paddingRight: '70px',
+        borderColor: Colors.lightGray,
+        backgroundColor: Colors.offWhite,
+        color: Colors.warmBlack,
+    },
+    sendButton: {
+        position: 'absolute',
+        right: '1rem',
     },
 }
 export default ChatBox

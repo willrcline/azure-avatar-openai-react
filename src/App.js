@@ -8,7 +8,7 @@ import Me from './components/me/Me'
 import RaisedFooter from './components/RaisedFooter';
 
 function App() {
-const [page, setPage] = useState(1);
+const [page, setPage] = useState(0);
 
 
   return (

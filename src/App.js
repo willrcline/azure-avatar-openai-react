@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react';
 import Me from './components/me/Me'
 
 function App() {
-const [page, setPage] = useState(0);
+const [page, setPage] = useState(1);
 
 
   return (

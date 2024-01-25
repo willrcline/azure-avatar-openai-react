@@ -18,11 +18,11 @@ export const Avatar = () => {
         <div className="container" style={styles.myAvatarContainer}>
             <div style={{ display: 'flex', flexDirection: "column", alignItems: 'center' }}>
                 <AvatarContext.Provider value={{sessionStarted, setSessionStarted, avatarSynthesizer, setAvatarSynthesizer, myAvatarAudioEleRef, myAvatarVideoEleRef}}>
-                    <div style={{display:"flex", flexDirection:"column"}}>
+                    <div style={{display:"flex", flexDirection:"column", justifyContent: "center"}}>
                         <AvatarVideo />
                         <TriggerStart />
                         <div style={{ height:60, display: "flex", flexDirection: "column", alignItems: "center", }}>
-                            {sessionStarted && <HorizontalToggle inputMode={inputMode} setInputMode={setInputMode}/>}
+                            {/* {sessionStarted && <HorizontalToggle inputMode={inputMode} setInputMode={setInputMode}/>} */}
                             {sessionStarted && inputMode === "voice" && <Audio />}
                         </div>
                     </div>

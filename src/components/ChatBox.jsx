@@ -56,7 +56,7 @@ const ChatBox = () => {
 
 const styles = {
     myTextAreaContainer: {
-        marginTop: '5rem',
+        marginTop: '0rem',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',

@@ -23,6 +23,7 @@ const chatSuggestions = [
 ];
 const ChatSuggestions = ({setMyInputText, chatHistory, setChatHistory}) => {
     const [buttonTexts, setButtonTexts] = useState([]);
+    const [hoveredButtonIndex, setHoveredButtonIndex] = useState(null);
     const inputPipeline = useInputPipeline({chatHistory, setChatHistory});
 
     useEffect(() => {
@@ -40,11 +41,28 @@ const ChatSuggestions = ({setMyInputText, chatHistory, setChatHistory}) => {
         inputPipeline(text);
     };
 
+    const handleButtonHover = (index) => {
+        setHoveredButtonIndex(index);
+    };
+
+    const handleButtonLeave = () => {
+        setHoveredButtonIndex(null);
+    };
+
     return (
         <div>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
                 {buttonTexts.map((text, index) => (
-                    <button key={index} style={styles.buttonStyle} onClick={() => handleButtonClick(text)}>
+                    <button
+                        key={index}
+                        style={{
+                            ...styles.buttonStyle,
+                            background: hoveredButtonIndex === index ? Colors.lightGray : 'none'
+                        }}
+                        onClick={() => handleButtonClick(text)}
+                        onMouseEnter={() => handleButtonHover(index)}
+                        onMouseLeave={handleButtonLeave}
+                    >
                         {text}
                     </button>
                 ))}

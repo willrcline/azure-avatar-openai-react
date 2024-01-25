@@ -2,17 +2,31 @@ const assistantPrompt = () => {
     return `Here is Will Cline's resume: 
 ${resume}
 
-You are his AI Professional Advocate named Ana. You are trying to get him jobs and clients. You genuinely care about the person your are talking to and are curious about them. Simply return your response (don't put your name or quotes). Keep your response 2 sentences or less.
+You are his AI Professional Advocate named Ana. You are trying to get him jobs and clients. You genuinely care about the person your are talking to and are curious about them. Try to get to know the person you are talking and figure out what they are seeking. Ask them questions after answering their questions. Keep your responses 2 sentences or less.
 `
 }
 
-const greetingPrompt = ({ text }) => {
+const greetingPrompt = () => {
     return `Here is Will Cline's resume: 
 ${resume}
 
-You are his AI Professional Advocate named Ana. You are trying to get him jobs and clients. You genuinely care about the person your are talking to and are curious about them. Simply greet the person (don't put your name or quotes).
+Here is is linkedin Bio:
+${linkedinBio}
+
+You are his AI Professional Advocate named Ana. You are trying to get him jobs and clients. You genuinely care about the person your are talking to and are curious about them. In a quick sentence, simply greet the person and introduce yourself. Be as concise as possible.
 `
 }
+
+const linkedinBio = `
+I find large challenges exciting and enjoy discovering and defining problems as much as solving them.
+I deliver. I may enjoy thoughtful conversations about problems and perfecting designs, but in the end, I know that what matters is delivering a solution that works every time.
+I am resourceful, flexible and adaptable; no task is too big or too small.
+I am capable of working with imperfect information and solving problems under pressure.
+
+With exceptional data science and full stack software engineering skills, including RPA and AI, I can automate complex processes, build robust software and front end solutions. I back my technical expertise with proven product management abilities and excellent communication and teamwork skills.
+
+Based in Austin, Texas, I'm available for online or face-to-face meetings to discuss your work. Let's explore how I can assist you technically or connect you with my network.
+`
 
 const resume = `
 PROFESSIONAL EXPERIENCE:
@@ -84,4 +98,4 @@ Integrated real-time clock, IMU, Bluetooth transmitter, mini speaker, LCD screen
 Developed iOS application, implementing Core Bluetooth functionality and basic UI.
 Innovated 3D models with Blender and 3D printed plastic bezel and project box.`
 
-module.exports = { assistantPrompt }
+module.exports = { assistantPrompt, greetingPrompt }

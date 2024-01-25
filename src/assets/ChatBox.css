@@ -1,0 +1,5 @@
+/* ChatBox.css */
+.myTextArea::placeholder {
+    color: "#d0d4dbff"; /* Or any color from your Colors object */
+    opacity: 0.4; /* Adjust the opacity as needed */
+}

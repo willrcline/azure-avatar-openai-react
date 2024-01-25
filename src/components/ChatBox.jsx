@@ -7,6 +7,7 @@ import Colors from "../helper/Colors.js";
 import ChatSuggestions from "./ChatSuggestions.jsx";
 import { FaHandSparkles } from "react-icons/fa";
 import { AvatarContext } from "./Avatar.jsx";
+import '../assets/ChatBox.css';
 
 const ChatBox = () => {
     const [myInputText, setMyInputText] = useState("");
@@ -15,12 +16,6 @@ const ChatBox = () => {
     ]);
     const inputPipeline = useInputPipeline({chatHistory, setChatHistory});
     const { inProgress } = useContext(AvatarContext);
-
-    const getAiText = async () => {
-        console.log("ChatBox.jsx getAiText prompt___", prompt);
-        var text = await fetchOpenAi({"prompt": prompt });
-        return text
-    }
 
     const handleSendInput = async () => {
         setMyInputText("");
@@ -42,14 +37,17 @@ const ChatBox = () => {
     const overlayStyle = {
         ...styles.overlay,
         opacity: inProgress ? 0.8 : 0, // Control the opacity based on inProgress
+        pointerEvents: inProgress ? 'auto' : 'none', // Enable or disable pointer events based on inProgress
     };
     
     return (
         <div style={{...styles.myTextAreaContainer, position: 'relative'}}>
-            {inProgress && <div style={overlayStyle} />}
+            <div style={overlayStyle} />
             <ChatSuggestions setMyInputText={setMyInputText} chatHistory={chatHistory} setChatHistory={setChatHistory}/>
-            <div style={{display: "flex", width: "35rem", position: "relative", alignItems: "center", justifyContent: "center"}}>
+            <div style={{marginTop: "2rem", display: "flex", width: "35rem", position: "relative", alignItems: "center", justifyContent: "center"}}>
                 <textarea 
+                    className="myTextArea"
+                    placeholder="Type here..."
                     style={styles.myTextArea} 
                     value={myInputText} 
                     onChange={handleInputText} 
@@ -57,7 +55,6 @@ const ChatBox = () => {
                 />
                 {(myInputText !== '') && (<FaHandSparkles onClick={handleSendInput} size={30} style={styles.sendButton}/>)}
             </div>
-            {/* Other elements */}
         </div>
     )
 }
@@ -69,10 +66,7 @@ const styles = {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        // Define a specific width and height as needed, or use min/max values
-        // For example:
         width: '100%',
-        // maxWidth: '35rem', // Same as the text area width
         position: 'relative', // Needed for absolute positioning of the overlay
     },
     overlay: {

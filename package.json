@@ -22,6 +22,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "predeploy" : "npm run build",
+    "deploy" : "gh-pages -d build",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -44,6 +46,7 @@
   },
   "devDependencies": {
     "bootstrap": "^5.3.2",
+    "gh-pages": "^6.1.1",
     "microsoft-cognitiveservices-speech-sdk": "^1.33.1"
   }
 }

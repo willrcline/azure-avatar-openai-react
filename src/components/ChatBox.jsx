@@ -7,6 +7,7 @@ import Colors from "../helper/Colors.js";
 import ChatSuggestions from "./ChatSuggestions.jsx";
 import { FaHandSparkles } from "react-icons/fa";
 import { AvatarContext } from "./Avatar.jsx";
+import '../assets/ChatBox.css';
 
 const ChatBox = () => {
     const [myInputText, setMyInputText] = useState("");
@@ -42,14 +43,17 @@ const ChatBox = () => {
     const overlayStyle = {
         ...styles.overlay,
         opacity: inProgress ? 0.8 : 0, // Control the opacity based on inProgress
+        pointerEvents: inProgress ? 'auto' : 'none', // Enable or disable pointer events based on inProgress
     };
     
     return (
         <div style={{...styles.myTextAreaContainer, position: 'relative'}}>
-            {inProgress && <div style={overlayStyle} />}
+            <div style={overlayStyle} />
             <ChatSuggestions setMyInputText={setMyInputText} chatHistory={chatHistory} setChatHistory={setChatHistory}/>
-            <div style={{display: "flex", width: "35rem", position: "relative", alignItems: "center", justifyContent: "center"}}>
+            <div style={{marginTop: "2rem", display: "flex", width: "35rem", position: "relative", alignItems: "center", justifyContent: "center"}}>
                 <textarea 
+                    className="myTextArea"
+                    placeholder="Type here..."
                     style={styles.myTextArea} 
                     value={myInputText} 
                     onChange={handleInputText} 

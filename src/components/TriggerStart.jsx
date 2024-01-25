@@ -17,12 +17,17 @@ const TriggerStart = () => {
         }
     }, [sessionStarted])
 
+    const handleStartSession = () => {
+        setClicked(true);
+        startSession();
+    }
+
     return (
         <>
             {!clicked && (
                 <p 
                     style = {{cursor: "pointer", color: Colors.gray, fontSize: 14, font: "Inter Variable", opacity: .3 }} 
-                    onClick={() => {setClicked(true); startSession()}}>
+                    onClick={handleStartSession}>
                     Click here to begin
                 </p>
             )} 

@@ -2,59 +2,54 @@ import { useState, useContext } from "react";
 import * as SpeechSDK from "microsoft-cognitiveservices-speech-sdk";
 import fetchOpenAi from "../service/fetchOpenAi";
 import { assistantPrompt } from "../helper/promptFactory";
-import { AvatarContext } from "./Avatar.jsx";
-import { useSpeakSelectedText } from "../helper/hooks/useSpeakSelectedText";
+import { useInputPipeline } from "../helper/hooks/useInputPipeline";
 import Colors from "../helper/Colors.js";
 import ChatSuggestions from "./ChatSuggestions.jsx";
+import { FaHandSparkles } from "react-icons/fa";
 
 const ChatBox = () => {
-    const [mySpeechText, setMySpeechText] = useState("");
-    const {avatarSynthesizer, myAvatarAudioEleRef} = useContext(AvatarContext);
-    const speakText = useSpeakSelectedText();
+    const [myInputText, setMyInputText] = useState("");
+    const [chatHistory, setChatHistory] = useState([
+        {"role": "system", "content": assistantPrompt()},
+    ]);
+    const inputPipeline = useInputPipeline({chatHistory, setChatHistory});
 
     const getAiText = async () => {
-        var prompt = assistantPrompt({"text": mySpeechText});
         console.log("ChatBox.jsx getAiText prompt___", prompt);
-        var text = await fetchOpenAi({"prompt": prompt })
+        var text = await fetchOpenAi({"prompt": prompt });
         return text
     }
 
-    const handleStartSpeak = async () => {
-        console.log("ChatBox.jsx handleStartSpeak___")
-        var text = await getAiText();
-        console.log("ChatBox.jsx handleStartSpeak text___", text);
-        speakText(text);
-    }
-
-    const handleSpeechText = (event) => {
-        setMySpeechText(event.target.value);
-    }
-
-    const stopSpeaking = () => {
-        avatarSynthesizer.stopSpeakingAsync().then(() => {
-          console.log("[" + (new Date()).toISOString() + "] Stop speaking request sent.")
+    const handleSendInput = async () => {
+        setMyInputText("");
+        inputPipeline(myInputText);
+    };
     
-        }).catch();
-    }  
+    
+    const handleInputText = (event) => {
+        setMyInputText(event.target.value);
+    }
 
+    const handleKeyDown = (event) => {
+        if (event.key === 'Enter' && !event.shiftKey) {
+            event.preventDefault();
+            handleSendInput();
+        }
+    }
     
     return (
-            <div style={styles.myTextAreaContainer}>
-                <ChatSuggestions />
-                <div style={{position: "relative"}}>
-                    <textarea style={styles.myTextArea} value={mySpeechText} onChange={handleSpeechText}>
-
-                    </textarea>
-                    <button style={styles.sendButton} onClick={handleStartSpeak}>
-                        Speak
-                    </button>
-                </div>
-                <div className="myButtonGroup d-flex justify-content-around">
-                    <button className="btn btn-warning" onClick={stopSpeaking}>
-                        Stop
-                    </button>
-                </div>
+        <div style={styles.myTextAreaContainer}>
+            <ChatSuggestions setMyInputText={setMyInputText} chatHistory={chatHistory} setChatHistory={setChatHistory}/>
+            <div style={{position: "relative", display: "flex", width: "35rem"}}>
+                <textarea 
+                    style={styles.myTextArea} 
+                    value={myInputText} 
+                    onChange={handleInputText} 
+                    onKeyDown={handleKeyDown} // Add this line
+                />
+                {(myInputText !== '') && (<FaHandSparkles onClick={handleSendInput} size={30} style={styles.sendButton}/>)}
             </div>
+        </div>
     )
 }
 
@@ -62,9 +57,12 @@ const ChatBox = () => {
 const styles = {
     myTextAreaContainer: {
         marginTop: '5rem',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
     },
     myTextArea: {
-        height: '4rem',
+        height: '3rem',
         width: '35rem',
         borderRadius: '25px',
         padding: '10px',
@@ -72,10 +70,17 @@ const styles = {
         borderColor: Colors.lightGray,
         backgroundColor: Colors.offWhite,
         color: Colors.warmBlack,
+        overflow: 'hidden',
+        resize: 'none',
+        outline: 'none',
     },
     sendButton: {
         position: 'absolute',
         right: '1rem',
+        top: '50%',
+        transform: 'translateY(-50%)',
+        color: Colors.black,
+        cursor: 'pointer',
     },
 }
 export default ChatBox

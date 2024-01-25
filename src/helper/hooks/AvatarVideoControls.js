@@ -1,7 +1,8 @@
-import { useContext, useEffect, useRef } from "react";
+import { useContext, useEffect, useRef, useCallback } from "react";
 import { createAvatarSynthesizer, createWebRTCConnection } from "../../components/Utility.js";
 import { avatarAppConfig } from "../../components/config.js";
 import { AvatarContext } from "../../components/Avatar.jsx";
+import { useSpeakSelectedText } from "./useSpeakSelectedText";
 
 function useStartSession() {
     const {setSessionStarted, setAvatarSynthesizer, myAvatarAudioEleRef, myAvatarVideoEleRef} = useContext(AvatarContext);
@@ -80,6 +81,7 @@ function useStartSession() {
 function useStopSession() {
     const {avatarSynthesizer} = useContext(AvatarContext);
 
+
     const stopSession = () => {
         try{
           //Stop speaking
@@ -93,6 +95,34 @@ function useStopSession() {
 
         return null
       }
+    return stopSession
 }
 
-export { useStartSession, useStopSession }
+const useStartAvatar = () => {
+    const speakText = useSpeakSelectedText();
+
+    const startAvatar = useCallback(async (text) => {
+        console.log("ChatBox.jsx handleStartAvatar___");
+        // Replace this with actual logic to get text
+        console.log("ChatBox.jsx handleStartAvatar text___", text);
+        speakText(text);
+    }, [speakText]);
+
+    return startAvatar;
+};
+
+
+const useStopAvatar = () => {
+    const { avatarSynthesizer } = useContext(AvatarContext);
+
+    const stopAvatar = useCallback(() => {
+        avatarSynthesizer.stopAvatarAsync()
+            .then(() => console.log("[" + (new Date()).toISOString() + "] Stop speaking request sent."))
+            .catch(error => console.error("Error stopping avatar:", error));
+    }, [avatarSynthesizer]);
+
+    return stopAvatar;
+};
+
+
+export { useStartSession, useStopSession, useStartAvatar, useStopAvatar }

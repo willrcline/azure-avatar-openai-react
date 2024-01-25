@@ -77,7 +77,7 @@ const styles = {
         border: `1px solid ${Colors.lightGray}`,
         background: 'none',
         padding: '4px',
-        margin: '8px',
+        margin: '1px',
         fontSize: '14px',
         color: Colors.warmBlack,
         cursor: 'pointer',

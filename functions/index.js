@@ -7,12 +7,12 @@ const cors = require('cors')({origin: true});
 
 exports.openAI = functions.https.onRequest(async (request, response) => {
     cors(request, response, async () => {
-        const prompt = request.body.data.prompt;
+        const chatHistory = request.body.data.chatHistory
         const maxTokens = request.body.data.maxTokens || null;
         const temperature = request.body.data.temperature || null;
     
         try {
-            const responseContent = await getOpenAIResponse({prompt, maxTokens, temperature});
+            const responseContent = await getOpenAIResponse({chatHistory, maxTokens, temperature});
             response.status(200).send({"data": responseContent});
         } catch (error) {
             response.status(500).send(error);

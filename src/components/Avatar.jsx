@@ -3,12 +3,14 @@ import AvatarVideo from "./AvatarVideo";
 import ChatBox from "./ChatBox";
 import TriggerStart from "./TriggerStart";
 import Audio from "./Audio";
+import HorizontalToggle from "./HorizontalToggle";
 
 export const AvatarContext = createContext(null);
 
 export const Avatar = () => {
     const [avatarSynthesizer, setAvatarSynthesizer] = useState(null);
     const [sessionStarted, setSessionStarted] = useState(false)
+    const [inputMode, setInputMode] = useState('text'); // ['voice', 'type'
     const myAvatarVideoEleRef = useRef();
     const myAvatarAudioEleRef = useRef();
 
@@ -16,14 +18,15 @@ export const Avatar = () => {
         <div className="container" style={styles.myAvatarContainer}>
             <div style={{ display: 'flex', flexDirection: "column", alignItems: 'center' }}>
                 <AvatarContext.Provider value={{sessionStarted, setSessionStarted, avatarSynthesizer, setAvatarSynthesizer, myAvatarAudioEleRef, myAvatarVideoEleRef}}>
-                    <div style={{display:"flex", flexDirection:"column"}}>
+                    <div style={{display:"flex", flexDirection:"column", justifyContent: "center"}}>
                         <AvatarVideo />
-                        <div style={{ height:20, display: "flex", flexDirection: "column", alignItems: "space-between" }}>
-                            <TriggerStart />
-                            {sessionStarted && <Audio />}
+                        <TriggerStart />
+                        <div style={{ height:60, display: "flex", flexDirection: "column", alignItems: "center", }}>
+                            {/* {sessionStarted && <HorizontalToggle inputMode={inputMode} setInputMode={setInputMode}/>} */}
+                            {sessionStarted && inputMode === "voice" && <Audio />}
                         </div>
                     </div>
-                    <ChatBox />
+                    {sessionStarted && inputMode === "text" && <ChatBox />}
                 </AvatarContext.Provider>
             </div>
         </div>

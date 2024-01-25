@@ -6,6 +6,7 @@ import { useInputPipeline } from "../helper/hooks/useInputPipeline";
 import Colors from "../helper/Colors.js";
 import ChatSuggestions from "./ChatSuggestions.jsx";
 import { FaHandSparkles } from "react-icons/fa";
+import { AvatarContext } from "./Avatar.jsx";
 
 const ChatBox = () => {
     const [myInputText, setMyInputText] = useState("");
@@ -13,6 +14,7 @@ const ChatBox = () => {
         {"role": "system", "content": assistantPrompt()},
     ]);
     const inputPipeline = useInputPipeline({chatHistory, setChatHistory});
+    const { inProgress } = useContext(AvatarContext);
 
     const getAiText = async () => {
         console.log("ChatBox.jsx getAiText prompt___", prompt);
@@ -36,23 +38,29 @@ const ChatBox = () => {
             handleSendInput();
         }
     }
+
+    const overlayStyle = {
+        ...styles.overlay,
+        opacity: inProgress ? 0.8 : 0, // Control the opacity based on inProgress
+    };
     
     return (
-        <div style={styles.myTextAreaContainer}>
+        <div style={{...styles.myTextAreaContainer, position: 'relative'}}>
+            {inProgress && <div style={overlayStyle} />}
             <ChatSuggestions setMyInputText={setMyInputText} chatHistory={chatHistory} setChatHistory={setChatHistory}/>
-            <div style={{position: "relative", display: "flex", width: "35rem"}}>
+            <div style={{display: "flex", width: "35rem", position: "relative", alignItems: "center", justifyContent: "center"}}>
                 <textarea 
                     style={styles.myTextArea} 
                     value={myInputText} 
                     onChange={handleInputText} 
-                    onKeyDown={handleKeyDown} // Add this line
+                    onKeyDown={handleKeyDown}
                 />
                 {(myInputText !== '') && (<FaHandSparkles onClick={handleSendInput} size={30} style={styles.sendButton}/>)}
             </div>
+            {/* Other elements */}
         </div>
     )
 }
-
 
 const styles = {
     myTextAreaContainer: {
@@ -60,13 +68,33 @@ const styles = {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
+        justifyContent: 'center',
+        // Define a specific width and height as needed, or use min/max values
+        // For example:
+        width: '100%',
+        // maxWidth: '35rem', // Same as the text area width
+        position: 'relative', // Needed for absolute positioning of the overlay
+    },
+    overlay: {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        backgroundColor: Colors.offWhite,
+        opacity: 0.8, // Adjust for desired overlay opacity
+        transition: 'opacity 2s ease-in-out',
+        zIndex: 100, // Ensure it's above other content
     },
     myTextArea: {
         height: '3rem',
-        width: '35rem',
+        lineHeight: '3rem',
+        width: '29rem', //container width - padding
         borderRadius: '25px',
-        padding: '10px',
-        paddingRight: '70px',
+        paddingLeft: '2rem',
+        paddingRight: '4rem',
+        // paddingTop: '5px',
+        // paddingBottom: '5px',
         borderColor: Colors.lightGray,
         backgroundColor: Colors.offWhite,
         color: Colors.warmBlack,
@@ -76,7 +104,7 @@ const styles = {
     },
     sendButton: {
         position: 'absolute',
-        right: '1rem',
+        right: '3.5rem',
         top: '50%',
         transform: 'translateY(-50%)',
         color: Colors.black,

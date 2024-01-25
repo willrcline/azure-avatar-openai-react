@@ -10,6 +10,7 @@ export const AvatarContext = createContext(null);
 export const Avatar = () => {
     const [avatarSynthesizer, setAvatarSynthesizer] = useState(null);
     const [sessionStarted, setSessionStarted] = useState(false)
+    const [inProgress, setInProgress] = useState(false)
     const [inputMode, setInputMode] = useState('text'); // ['voice', 'type'
     const myAvatarVideoEleRef = useRef();
     const myAvatarAudioEleRef = useRef();
@@ -17,7 +18,7 @@ export const Avatar = () => {
     return(
         <div className="container" style={styles.myAvatarContainer}>
             <div style={{ display: 'flex', flexDirection: "column", alignItems: 'center' }}>
-                <AvatarContext.Provider value={{sessionStarted, setSessionStarted, avatarSynthesizer, setAvatarSynthesizer, myAvatarAudioEleRef, myAvatarVideoEleRef}}>
+                <AvatarContext.Provider value={{inProgress, setInProgress, sessionStarted, setSessionStarted, avatarSynthesizer, setAvatarSynthesizer, myAvatarAudioEleRef, myAvatarVideoEleRef}}>
                     <div style={{display:"flex", flexDirection:"column", justifyContent: "center"}}>
                         <AvatarVideo />
                         <TriggerStart />

@@ -1,11 +1,14 @@
-import { useState } from 'react';
+import { useState, useContext} from 'react';
 import fetchOpenAi from '../../service/fetchOpenAi';
 import { useStartAvatar } from './AvatarVideoControls';
+import { AvatarContext } from "../../components/Avatar";
 
 const useInputPipeline = ({chatHistory, setChatHistory}) => {
     const startAvatar = useStartAvatar();
+    const { setInProgress } = useContext(AvatarContext);
 
     const inputPipeline = async (input) => {
+        setInProgress(true)
         var inputObj = { "role": "user", "content": input };
         console.log('useInputPipeline Current chatHistory___', chatHistory); // Add this line
         var updatedChatHistory = [...chatHistory, inputObj];

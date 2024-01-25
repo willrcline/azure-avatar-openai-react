@@ -1,13 +1,13 @@
 import { useState, useContext } from "react";
 import * as SpeechSDK from "microsoft-cognitiveservices-speech-sdk";
-import fetchOpenAi from "../service/fetchOpenAi";
-import { assistantPrompt } from "../helper/promptFactory";
-import { useInputPipeline } from "../helper/hooks/useInputPipeline";
-import Colors from "../helper/Colors.js";
+import fetchOpenAi from "../../service/fetchOpenAi.js";
+import { assistantPrompt } from "../../helper/promptFactory.js";
+import { useInputPipeline } from "../../helper/hooks/useInputPipeline.js";
+import Colors from "../../helper/Colors.js";
 import ChatSuggestions from "./ChatSuggestions.jsx";
 import { FaHandSparkles } from "react-icons/fa";
 import { AvatarContext } from "./Avatar.jsx";
-import '../assets/ChatBox.css';
+import '../../assets/ChatBox.css';
 
 const ChatBox = () => {
     const [myInputText, setMyInputText] = useState("");

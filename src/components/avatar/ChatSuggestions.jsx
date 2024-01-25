@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from "react";
-import Colors from "../helper/Colors.js";
-import { useInputPipeline } from "../helper/hooks/useInputPipeline";
+import Colors from "../../helper/Colors.js";
+import { useInputPipeline } from "../../helper/hooks/useInputPipeline.js";
 
 const chatSuggestions = [
     "What stands out in Will's resume?",

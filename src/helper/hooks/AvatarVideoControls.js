@@ -1,7 +1,7 @@
 import { useContext, useEffect, useRef, useCallback } from "react";
 import { createAvatarSynthesizer, createWebRTCConnection } from "../../components/Utility.js";
 import { avatarAppConfig } from "../../components/config.js";
-import { AvatarContext } from "../../components/Avatar.jsx";
+import { AvatarContext } from "../../components/avatar/Avatar.jsx";
 import { useSpeakSelectedText } from "./useSpeakSelectedText";
 
 function useStartSession() {

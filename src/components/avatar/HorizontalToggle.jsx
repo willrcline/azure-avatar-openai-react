@@ -1,5 +1,5 @@
 import React from 'react';
-import Colors from "../helper/Colors.js";
+import Colors from "../../helper/Colors.js";
 
 const HorizontalToggle = ({ inputMode, setInputMode}) => {
     const handleClick = () => {

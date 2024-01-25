@@ -1,10 +1,10 @@
 import {useState, useContext, useEffect} from "react";
 import { AvatarContext } from "./Avatar.jsx";
-import { useSpeakSelectedText } from "../helper/hooks/useSpeakSelectedText";
-import { useStartSession } from "../helper/hooks/AvatarVideoControls.js";
-import Colors from "../helper/Colors.js";
-import { greetingPrompt } from "../helper/promptFactory.js";
-import fetchOpenAi from "../service/fetchOpenAi.js";
+import { useSpeakSelectedText } from "../../helper/hooks/useSpeakSelectedText.js";
+import { useStartSession } from "../../helper/hooks/AvatarVideoControls.js";
+import Colors from "../../helper/Colors.js";
+import { greetingPrompt } from "../../helper/promptFactory.js";
+import fetchOpenAi from "../../service/fetchOpenAi.js";
 
 const TriggerStart = () => {
     const [clicked, setClicked] = useState(false);

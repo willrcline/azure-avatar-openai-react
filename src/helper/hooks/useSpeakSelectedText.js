@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { AvatarContext } from "../../components/Avatar"
+import { AvatarContext } from "../../components/avatar/Avatar"
 import * as SpeechSDK from "microsoft-cognitiveservices-speech-sdk";
 
 function useSpeakSelectedText() {

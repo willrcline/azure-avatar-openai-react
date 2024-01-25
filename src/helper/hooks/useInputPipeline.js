@@ -1,7 +1,7 @@
 import { useState, useContext} from 'react';
 import fetchOpenAi from '../../service/fetchOpenAi';
 import { useStartAvatar } from './AvatarVideoControls';
-import { AvatarContext } from "../../components/Avatar";
+import { AvatarContext } from "../../components/avatar/Avatar";
 
 const useInputPipeline = ({chatHistory, setChatHistory}) => {
     const startAvatar = useStartAvatar();

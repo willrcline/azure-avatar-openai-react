@@ -1,5 +1,5 @@
 import {useState, useContext, useEffect, useRef} from "react";
-import Colors from "../helper/Colors.js";
+import Colors from "../../helper/Colors.js";
 import { AvatarContext } from "./Avatar.jsx";
 
 const Audio = () => {

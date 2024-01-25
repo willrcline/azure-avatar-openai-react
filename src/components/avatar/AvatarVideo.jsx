@@ -1,7 +1,7 @@
 // import { useState } from "react";
 import { useContext, useState } from "react";
 import { AvatarContext } from "./Avatar.jsx";
-import Colors from "../helper/Colors.js";
+import Colors from "../../helper/Colors.js";
 
 
 const AvatarVideo = () => {

@@ -6,6 +6,7 @@ const VerticalToggle = ({ page, setPage }) => {
         const pages = [0, 1];
         const nextPage = (page + 1) % pages.length;
         setPage(pages[nextPage]);
+        console.log("VerticalToggle.jsx handleClick___", pages[nextPage])
     };
 
 

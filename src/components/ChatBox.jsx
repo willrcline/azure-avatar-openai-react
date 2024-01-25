@@ -17,12 +17,6 @@ const ChatBox = () => {
     const inputPipeline = useInputPipeline({chatHistory, setChatHistory});
     const { inProgress } = useContext(AvatarContext);
 
-    const getAiText = async () => {
-        console.log("ChatBox.jsx getAiText prompt___", prompt);
-        var text = await fetchOpenAi({"prompt": prompt });
-        return text
-    }
-
     const handleSendInput = async () => {
         setMyInputText("");
         inputPipeline(myInputText);
@@ -61,7 +55,6 @@ const ChatBox = () => {
                 />
                 {(myInputText !== '') && (<FaHandSparkles onClick={handleSendInput} size={30} style={styles.sendButton}/>)}
             </div>
-            {/* Other elements */}
         </div>
     )
 }
@@ -73,10 +66,7 @@ const styles = {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        // Define a specific width and height as needed, or use min/max values
-        // For example:
         width: '100%',
-        // maxWidth: '35rem', // Same as the text area width
         position: 'relative', // Needed for absolute positioning of the overlay
     },
     overlay: {

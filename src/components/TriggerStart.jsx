@@ -3,23 +3,46 @@ import { AvatarContext } from "./Avatar.jsx";
 import { useSpeakSelectedText } from "../helper/hooks/useSpeakSelectedText";
 import { useStartSession } from "../helper/hooks/AvatarVideoControls.js";
 import Colors from "../helper/Colors.js";
+import { greetingPrompt } from "../helper/promptFactory.js";
+import fetchOpenAi from "../service/fetchOpenAi.js";
 
 const TriggerStart = () => {
     const [clicked, setClicked] = useState(false);
-    const {sessionStarted} = useContext(AvatarContext);
+    const {sessionStarted, setInProgress} = useContext(AvatarContext);
     const speakText = useSpeakSelectedText();
     const startSession = useStartSession()
+    const [greetingText, setGreetingText] = useState("Hi, I'm Ana, Will's AI professional advocate. How can I help you?");
     
 
     useEffect(() => {
         if (sessionStarted) {
-            speakText("Hi, welcome.")
-        }
-    }, [sessionStarted])
+            // const async = async () => {
+            //     const prompt = [
+            //         {"role": "system", "content": greetingPrompt()},
+            //     ];
+            //     var response = await fetchOpenAi({chatHistory: prompt});
+            //     console.log("TriggerStart.jsx response___", response);
+            //     speakText(response);
+            // }
+            // async();
+            speakText(greetingText);
+        };
+    }, [sessionStarted]);
 
-    const handleStartSession = () => {
+    const handleStartSession = async () => {
         setClicked(true);
         startSession();
+        setInProgress(true);
+        var text = await fetchGreetingText();
+        setGreetingText(text)
+    }
+
+    const fetchGreetingText = async () => {
+        const prompt = [
+            {"role": "system", "content": greetingPrompt()},
+        ];
+        var response = await fetchOpenAi({chatHistory: prompt});
+        return response;
     }
 
     return (

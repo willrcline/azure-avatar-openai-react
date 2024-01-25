@@ -5,6 +5,7 @@ import { createGlobalStyle } from 'styled-components';
 import VerticalToggle from './components/VerticalToggle';
 import { useState, useEffect } from 'react';
 import Me from './components/me/Me'
+import RaisedFooter from './components/RaisedFooter';
 
 function App() {
 const [page, setPage] = useState(1);
@@ -17,6 +18,7 @@ const [page, setPage] = useState(1);
       {page === 0 && <Avatar/>}
       {page === 1 && <Me/>}
       <Footer/>
+      {/* {page === 1 && <RaisedFooter/>} */}
     </div>
   );
 }

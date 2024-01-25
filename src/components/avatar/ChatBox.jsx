@@ -7,7 +7,7 @@ import Colors from "../../helper/Colors.js";
 import ChatSuggestions from "./ChatSuggestions.jsx";
 import { FaHandSparkles } from "react-icons/fa";
 import { AvatarContext } from "./Avatar.jsx";
-import '../../assets/ChatBox.css';
+import '../../assets/special.css';
 
 const ChatBox = () => {
     const [myInputText, setMyInputText] = useState("");

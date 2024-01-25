@@ -6,8 +6,7 @@ const Me = () => {
 
     return (
         <div style={styles.container}>
-            <h1 style={{fontSize: '45px'}}>Hi, How's it going?</h1>
-            <div style={{display: "flex", flexDirection: 'row', alignItems: "center"}}>
+            <div style={{height: "100%", marginTop: "1rem", display: "flex", flexDirection: 'row', justifyContent: "center", alignItems: "center"}}>
                 <Portrait />
                 <Bio />
             </div>

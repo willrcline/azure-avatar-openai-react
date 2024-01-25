@@ -5,14 +5,14 @@ const Portrait = () => {
     const [showTooltip, setShowTooltip] = useState(false);
 
     return (
-        <div
-            onMouseEnter={() => setShowTooltip(true)}
-            onMouseLeave={() => setShowTooltip(false)}
-            style={styles.container}
-        >
-            <img style={{ width: "100%"}} alt="full body shot of Will Cline" src={fullBody} id="profile-picture" />
+        // <div
+        //     onMouseEnter={() => setShowTooltip(true)}
+        //     onMouseLeave={() => setShowTooltip(false)}
+        //     style={styles.container}
+        // >
+            <img style={{ height: "80vh"}} alt="full body shot of Will Cline" src={fullBody} id="profile-picture" />
         
-        </div>
+        // </div>
     );
 };
 
@@ -22,8 +22,7 @@ const styles = {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        marginTop: '2rem',
-        width: '80%',
+        width: '100%',
     }
 }
 

@@ -1,0 +1,30 @@
+/* ChatBox.css */
+.myTextArea::placeholder {
+    color: "#d0d4dbff"; /* Or any color from your Colors object */
+    opacity: 0.4; /* Adjust the opacity as needed */
+}
+
+.scrollableContent::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Chrome, Safari, Opera */
+}
+
+.scrollableContent {
+    ms-overflow-style: none; /* Hide scrollbar for IE, Edge */
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+}
+
+.fadeTop {
+    height: 40px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    background: linear-gradient(to bottom, white, transparent);
+}
+
+.fadeBottom {
+    height: 40px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    background: linear-gradient(to top, white, transparent);
+}

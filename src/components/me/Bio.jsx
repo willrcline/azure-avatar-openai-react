@@ -1,8 +1,7 @@
 import React from 'react';
 import '../../assets/special.css';
 import Colors from '../../helper/Colors.js';
-import { FaLinkedin } from "react-icons/fa";
-import { FaGithub } from "react-icons/fa";
+import IconRow from './IconRow.js';
 
 const BioText = () => {
     return (
@@ -19,21 +18,8 @@ const BioText = () => {
     )
 }
 
-const IconRow = () => {
-    return (
-    <span>
-        <a href="https://www.linkedin.com/in/willrcline">
-            <FaLinkedin size={30} style={{pointer: "cursor", marginLeft: "2px", marginRight: "2px", color: Colors.black}}/>
-        </a>
-        <a href="https://www.github.com/willrcline">
-            <FaGithub size={30} style={{pointer: "cursor", marginLeft: "2px", marginRight: "2px", color: Colors.black}}/>
-        </a>
-    </span>
-    )
-}
 
 const Bio = () => {
-
 
     return (
         <div style={styles.container}>
@@ -94,7 +80,7 @@ const styles = {
         bottom: 0,
         background: `linear-gradient(transparent, ${Colors.offWhite})`,
         pointerEvents: 'none', // Add this as well
-    }
+    },
 }
 
 export default Bio;

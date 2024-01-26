@@ -11,7 +11,7 @@ const TriggerStart = () => {
     const {sessionStarted, setInProgress} = useContext(AvatarContext);
     const speakText = useSpeakSelectedText();
     const startSession = useStartSession()
-    const [greetingText, setGreetingText] = useState("Hi, I'm Ana, Will's AI professional advocate. How can I help you?");
+    const [greetingText, setGreetingText] = useState("Hi, I'm Mae, Will's AI professional advocate. How can I help you?");
     
 
     useEffect(() => {

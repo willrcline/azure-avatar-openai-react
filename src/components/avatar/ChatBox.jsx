@@ -41,69 +41,79 @@ const ChatBox = () => {
     };
     
     return (
-        <div style={{...styles.myTextAreaContainer, position: 'relative'}}>
+        <div style={{...styles.container, position: 'relative'}}>
             <div style={overlayStyle} />
             <ChatSuggestions setMyInputText={setMyInputText} chatHistory={chatHistory} setChatHistory={setChatHistory}/>
-            <div style={{marginTop: "2rem", display: "flex", width: "35rem", position: "relative", alignItems: "center", justifyContent: "center"}}>
-                <textarea 
-                    className="myTextArea"
-                    placeholder="Type here..."
-                    style={styles.myTextArea} 
-                    value={myInputText} 
-                    onChange={handleInputText} 
-                    onKeyDown={handleKeyDown}
-                />
-                {(myInputText !== '') && (<FaHandSparkles onClick={handleSendInput} size={30} style={styles.sendButton}/>)}
-            </div>
-        </div>
-    )
-}
+                        <div style={styles.textAreaContainer}>
+                            <textarea 
+                                className="scrollableContent"
+                                placeholder="Type here..."
+                                style={styles.myTextArea} 
+                                value={myInputText} 
+                                onChange={handleInputText} 
+                                onKeyDown={handleKeyDown}
+                            />
+                            {(myInputText !== '') && (<FaHandSparkles onClick={handleSendInput} size={30} style={styles.sendButton}/>)}
+                        </div>
+                    </div>
+                )
+            }
 
-const styles = {
-    myTextAreaContainer: {
-        marginTop: '0rem',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        width: '100%',
-        position: 'relative', // Needed for absolute positioning of the overlay
-    },
-    overlay: {
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        backgroundColor: Colors.offWhite,
-        opacity: 0.8, // Adjust for desired overlay opacity
-        transition: 'opacity 2s ease-in-out',
-        zIndex: 100, // Ensure it's above other content
-    },
-    myTextArea: {
-        height: '3rem',
-        lineHeight: '3rem',
-        width: '29rem', //container width - padding
-        borderRadius: '25px',
-        paddingLeft: '2rem',
-        paddingRight: '4rem',
-        // paddingTop: '5px',
-        // paddingBottom: '5px',
-        borderColor: Colors.lightGray,
-        backgroundColor: Colors.offWhite,
-        color: Colors.warmBlack,
-        overflow: 'hidden',
-        resize: 'none',
-        outline: 'none',
-    },
-    sendButton: {
-        position: 'absolute',
-        right: '3.5rem',
-        top: '50%',
-        transform: 'translateY(-50%)',
-        color: Colors.black,
-        cursor: 'pointer',
-    },
-}
+            const styles = {
+                container: {
+                    marginTop: '0rem',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    width: '100%',
+                    position: 'relative', // Needed for absolute positioning of the overlay
+                    zIndex: 10,
+                },
+                overlay: {
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    backgroundColor: Colors.offWhite,
+                    opacity: 0.8, // Adjust for desired overlay opacity
+                    transition: 'opacity 2s ease-in-out',
+                    zIndex: 100, // Ensure it's above other content
+                },
+                textAreaContainer: {
+                    height: '1.75rem',
+                    padding: '1.5rem',
+                    marginTop: "2rem",
+                    display: "flex",
+                    width: "29rem",
+                    position: "relative",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    border: '1px solid',
+                    borderColor: Colors.lightGray,
+                    borderRadius: '25px',
+                },
+                myTextArea: {
+                    height: '1.75rem',
+                    width: '29rem', //container width - padding
+                    paddingRight: '2rem',
+                    boxSizing: 'border-box',
+                    border: '0px solid',
+                    backgroundColor: Colors.offWhite,
+                    color: Colors.warmBlack,
+                    resize: 'none',
+                    outline: 'none',
+                },
+                sendButton: {
+                    position: 'absolute',
+                    right: '1.25rem',
+                    // transform: 'translateX(-50%)',
+                    top: '50%',
+                    transform: 'translateY(-50%)',
+                    color: Colors.black,
+                    cursor: 'pointer',
+                },
+            }
 export default ChatBox
 

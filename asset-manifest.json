@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/azure-avatar-openai-react/static/css/main.2ab1b0f2.css",
-    "main.js": "/azure-avatar-openai-react/static/js/main.e2b0f669.js",
-    "static/media/full-body-portal.png": "/azure-avatar-openai-react/static/media/full-body-portal.c6d9e74ead98669dcb02.png",
-    "static/media/plant.chunk.png": "/azure-avatar-openai-react/static/media/plant.chunk.40c180d4abbb94a7268f.png",
-    "static/media/bottom-shadow.svg": "/azure-avatar-openai-react/static/media/bottom-shadow.6813e1fe26be7dde496f090e31867b1c.svg",
-    "static/media/raisedFooterShadow.svg": "/azure-avatar-openai-react/static/media/raisedFooterShadow.b300a8bb5136a17daec0402c5ff6c577.svg",
-    "static/media/plant-shadow.chunk.svg": "/azure-avatar-openai-react/static/media/plant-shadow.chunk.338a948f732b063b6060211fb3874eb3.svg",
-    "index.html": "/azure-avatar-openai-react/index.html",
-    "main.2ab1b0f2.css.map": "/azure-avatar-openai-react/static/css/main.2ab1b0f2.css.map",
-    "main.e2b0f669.js.map": "/azure-avatar-openai-react/static/js/main.e2b0f669.js.map"
+    "main.css": "/static/css/main.2ab1b0f2.css",
+    "main.js": "/static/js/main.7c9be756.js",
+    "static/media/full-body-portal.png": "/static/media/full-body-portal.c6d9e74ead98669dcb02.png",
+    "static/media/plant.chunk.png": "/static/media/plant.chunk.40c180d4abbb94a7268f.png",
+    "static/media/bottom-shadow.svg": "/static/media/bottom-shadow.6813e1fe26be7dde496f090e31867b1c.svg",
+    "static/media/raisedFooterShadow.svg": "/static/media/raisedFooterShadow.b300a8bb5136a17daec0402c5ff6c577.svg",
+    "static/media/plant-shadow.chunk.svg": "/static/media/plant-shadow.chunk.338a948f732b063b6060211fb3874eb3.svg",
+    "index.html": "/index.html",
+    "main.2ab1b0f2.css.map": "/static/css/main.2ab1b0f2.css.map",
+    "main.7c9be756.js.map": "/static/js/main.7c9be756.js.map"
   },
   "entrypoints": [
     "static/css/main.2ab1b0f2.css",
-    "static/js/main.e2b0f669.js"
+    "static/js/main.7c9be756.js"
   ]
 }

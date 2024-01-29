@@ -30,7 +30,7 @@ const Bio = () => {
         width: 25%;
         height: 50%;
 
-        @media (max-width: 768px) {
+        @media (max-width: 600px) {
             width: 65%;
             margin-bottom: 0rem;
             padding: 0rem;
@@ -40,8 +40,8 @@ const Bio = () => {
     const FadeContainer = styled.div`
         position: relative;
         height: 550px; /* Same as scrollableContent height */
-        @media (max-width: 768px) {
-            height: 275px
+        @media (max-width: 600px) {
+            height: 195px
         }
     `;
 
@@ -50,8 +50,8 @@ const Bio = () => {
         overflow-y: auto;
         text-align: left;
         position: relative;
-        @media (max-width: 768px) {
-            height: 275px
+        @media (max-width: 600px) {
+            height: 195px
         }
     `;
 
@@ -63,7 +63,7 @@ const Bio = () => {
         background: linear-gradient(${Colors.offWhite}, transparent);
         pointer-events: none; /* Add this to allow interaction with the content below */
         z-index: 2;
-        @media (max-width: 768px) {
+        @media (max-width: 600px) {
             height: 75px
         }
     `;
@@ -75,17 +75,24 @@ const Bio = () => {
         bottom: 0;
         background: linear-gradient(transparent, ${Colors.offWhite});
         pointer-events: none; /* Add this as well */
-        @media (max-width: 768px) {
-            height: 125px
+        @media (max-width: 600px) {
+            height: 115px
         }
     `;
 
     const H2 = styled.h2`
         font-size: 40px; 
         margin-bottom: 2rem;
-        @media (max-width: 768px) {
-            font-size: 38px; 
+        @media (max-width: 600px) {
+            font-size: 29px; 
             margin-bottom: 2rem;
+        }
+    `; 
+
+    const H3 = styled.h3`
+        
+        @media (max-width: 600px) {
+            font-size: 20px; 
         }
     `; 
 
@@ -96,7 +103,7 @@ const Bio = () => {
                 <ScrollableContent className='scrollableContent'>
                     <br />
                     <br />
-                    {window.innerWidth >= 768 && (
+                    {window.innerWidth >= 600 && (
                         <>
                         <br />
                         <br />
@@ -109,9 +116,9 @@ const Bio = () => {
                         Hi, How's it going?
                     </H2>
 
-                    <h3 id="hero-quote">
+                    <H3 id="hero-quote">
                         "There are those who need to be told what to do and there are those who figure it out with grit."
-                    </h3>
+                    </H3>
                     <br />
                     <BioText />
                     <br />
@@ -120,9 +127,9 @@ const Bio = () => {
                     <br />
                     <br />
                     <br />
-                    <br />
-                    {window.innerWidth >= 768 && (
+                    {window.innerWidth >= 600 && (
                         <>
+                            <br />
                             <br />
                             <br />
                             <br />

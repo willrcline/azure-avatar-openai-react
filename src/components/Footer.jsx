@@ -12,7 +12,7 @@ const Footer = () => {
     width: 115px;
 
     // Media query for screens smaller than 768px
-    @media (max-width: 768px) {
+    @media (max-width: 600px) {
         width: 75px;
     }
     `;

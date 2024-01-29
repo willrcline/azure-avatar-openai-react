@@ -7,7 +7,7 @@ const Portrait = () => {
     const PortraitImg = styled.img`
         height: 80vh;
 
-        @media (max-width: 768px) {
+        @media (max-width: 600px) {
             height: 60vh;
 
         }

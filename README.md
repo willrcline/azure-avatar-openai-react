@@ -2,7 +2,7 @@
 
 This portfolio site is a showcase of my work and skills, featuring the Azure Text to Avatar API, OpenAI Chat API, Firebase Cloud Functions, and React.
 
-[Deployed here](willrcline.com)
+[Deployed here](https://willrcline.com)
 
 ## Features
 

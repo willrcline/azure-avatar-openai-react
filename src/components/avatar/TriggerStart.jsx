@@ -49,8 +49,20 @@ const TriggerStart = () => {
         <>
             {!clicked && (
                 <p 
-                    style = {{cursor: "pointer", color: Colors.gray, fontSize: 14, font: "Inter Variable", opacity: .3 }} 
-                    onClick={handleStartSession}>
+                style = {{
+                    position: 'fixed',
+                    top: '50%', /* Center vertically */
+                    left: '50%', /* Center horizontally */
+                    transform: 'translate(-50%, -50%)', // Corrected line
+                    cursor: "pointer", 
+                    color: Colors.gray, 
+                    fontSize: 14, 
+                    font: "Inter Variable", 
+                    opacity: .3, 
+                    zIndex: 101,
+                }} 
+                onClick={handleStartSession}
+                >
                     Click here to begin
                 </p>
             )} 

@@ -1,27 +1,32 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Portrait from './Portrait';
 import Bio from "./Bio";
+import styled from 'styled-components';
+
+const Container = styled.div`
+    height: 100%; 
+    margin-top: 2rem; 
+    margin-right: 4rem;
+    margin-left: 4rem;
+    display: flex; 
+    flex-direction: row; 
+    justify-content: center; 
+    align-items: center;
+
+    @media (max-width: 768px) {
+        flex-direction: column-reverse;
+        margin-right: 0rem;
+        margin-left: 0rem;
+    }
+`;
 
 const Me = () => {
-
     return (
-        <div style={styles.container}>
-            <div style={{height: "100%", marginTop: "1rem", display: "flex", flexDirection: 'row', justifyContent: "center", alignItems: "center"}}>
-                <Portrait />
-                <Bio />
-            </div>
-        </div>
+        <Container>
+            <Portrait />
+            <Bio />
+        </Container>
     )
-}
-
-const styles = {
-    container : {
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginTop: '1rem',
-    }
 }
 
 export default Me;

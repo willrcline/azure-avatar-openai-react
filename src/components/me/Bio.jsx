@@ -2,6 +2,7 @@ import React from 'react';
 import '../../assets/special.css';
 import Colors from '../../helper/Colors.js';
 import IconRow from './IconRow.js';
+import styled from 'styled-components';
 
 const BioText = () => {
     return (
@@ -18,69 +19,120 @@ const BioText = () => {
     )
 }
 
-
 const Bio = () => {
+    const Container = styled.div`
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem;
+        margin-bottom: 8rem;
+        width: 25%;
+        height: 50%;
+
+        @media (max-width: 768px) {
+            width: 65%;
+            margin-bottom: 0rem;
+            padding: 0rem;
+        }
+    `;
+
+    const FadeContainer = styled.div`
+        position: relative;
+        height: 550px; /* Same as scrollableContent height */
+        @media (max-width: 768px) {
+            height: 275px
+        }
+    `;
+
+    const ScrollableContent = styled.div`
+        height: 550px; /* Adjust as needed */
+        overflow-y: auto;
+        text-align: left;
+        position: relative;
+        @media (max-width: 768px) {
+            height: 275px
+        }
+    `;
+
+    const FadeTop = styled.div`
+        height: 200px;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        background: linear-gradient(${Colors.offWhite}, transparent);
+        pointer-events: none; /* Add this to allow interaction with the content below */
+        z-index: 2;
+        @media (max-width: 768px) {
+            height: 75px
+        }
+    `;
+
+    const FadeBottom = styled.div`
+        height: 200px;
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        background: linear-gradient(transparent, ${Colors.offWhite});
+        pointer-events: none; /* Add this as well */
+        @media (max-width: 768px) {
+            height: 125px
+        }
+    `;
+
+    const H2 = styled.h2`
+        font-size: 40px; 
+        margin-bottom: 2rem;
+        @media (max-width: 768px) {
+            font-size: 38px; 
+            margin-bottom: 2rem;
+        }
+    `; 
 
     return (
-        <div style={styles.container}>
-            <div style={styles.fadeContainer}> 
-                <div style={styles.fadeTop} />
-                <div className="scrollableContent" style={styles.scrollableContent}>
-                    <br/><br/><br/><br/><br/><br/><br/>
-                    <h2 style={{fontSize: '40px', marginBottom: '2rem'}}>Hi, How's it going?</h2>
+        <Container>
+            <FadeContainer>
+                 <FadeTop />
+                <ScrollableContent className='scrollableContent'>
+                    <br />
+                    <br />
+                    {window.innerWidth >= 768 && (
+                        <>
+                        <br />
+                        <br />
+                            <br />
+                            <br />
+                            <br />
+                        </>
+                    )}
+                    <H2>
+                        Hi, How's it going?
+                    </H2>
 
-                    <h3 id="hero-quote">"There are those who need to be told what to do and there are those who figure it out with grit."</h3>
+                    <h3 id="hero-quote">
+                        "There are those who need to be told what to do and there are those who figure it out with grit."
+                    </h3>
                     <br />
                     <BioText />
-                    <br/>
+                    <br />
                     <IconRow />
-                    <br/><br/><br/><br/><br/><br/>
-                </div>
-                <div style={styles.fadeBottom} />
-            </div>
-        </div>
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    {window.innerWidth >= 768 && (
+                        <>
+                            <br />
+                            <br />
+                            <br />
+                        </>
+                    )}
+                </ScrollableContent>
+                <FadeBottom />
+            </FadeContainer>
+        </Container>
     );
 };
-
-const styles = {
-    container: {
-        display: 'flex', 
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        padding: '1rem',
-        marginBottom: '8rem',
-        // marginRight: '5rem',
-        width: '25%',
-        // position: 'absolute'
-    },
-    fadeContainer: {
-        position: 'relative',
-        height: '550px', // Same as scrollableContent height
-    },
-    scrollableContent: {
-        height: '550px', // Adjust as needed
-        overflowY: 'auto',
-        textAlign: 'left',
-        position: 'relative',
-    },
-    fadeTop: {
-        height: '200px',
-        width: '100%',
-        position: 'absolute',
-        top: 0,
-        background: `linear-gradient(${Colors.offWhite}, transparent)`,
-        pointerEvents: 'none', // Add this to allow interaction with the content below
-        zIndex: 2
-    },
-    fadeBottom: {
-        height: '200px',
-        width: '100%',
-        position: 'absolute',
-        bottom: 0,
-        background: `linear-gradient(transparent, ${Colors.offWhite})`,
-        pointerEvents: 'none', // Add this as well
-    },
-}
 
 export default Bio;

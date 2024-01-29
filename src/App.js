@@ -25,8 +25,7 @@ const [page, setPage] = useState(0);
 
 const GlobalStyle = createGlobalStyle`
   body {
-    background-color: ${Colors.offWhite}; /* Your desired color */
-    overflowY: 'auto'
+    background-color: ${Colors.offWhite};
   }
 `;
 

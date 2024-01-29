@@ -31,7 +31,9 @@ const Bio = () => {
         height: 50%;
 
         @media (max-width: 768px) {
-            width: '50%',
+            width: 65%;
+            margin-bottom: 0rem;
+            padding: 0rem;
         }
     `;
 
@@ -39,7 +41,7 @@ const Bio = () => {
         position: relative;
         height: 550px; /* Same as scrollableContent height */
         @media (max-width: 768px) {
-            height: 325px
+            height: 275px
         }
     `;
 
@@ -49,7 +51,7 @@ const Bio = () => {
         text-align: left;
         position: relative;
         @media (max-width: 768px) {
-            height: 325px
+            height: 275px
         }
     `;
 
@@ -62,7 +64,7 @@ const Bio = () => {
         pointer-events: none; /* Add this to allow interaction with the content below */
         z-index: 2;
         @media (max-width: 768px) {
-            height: 100px
+            height: 75px
         }
     `;
 
@@ -73,23 +75,39 @@ const Bio = () => {
         bottom: 0;
         background: linear-gradient(transparent, ${Colors.offWhite});
         pointer-events: none; /* Add this as well */
+        @media (max-width: 768px) {
+            height: 125px
+        }
     `;
+
+    const H2 = styled.h2`
+        font-size: 40px; 
+        margin-bottom: 2rem;
+        @media (max-width: 768px) {
+            font-size: 38px; 
+            margin-bottom: 2rem;
+        }
+    `; 
 
     return (
         <Container>
             <FadeContainer>
-                <FadeTop />
+                 <FadeTop />
                 <ScrollableContent className='scrollableContent'>
                     <br />
                     <br />
-                    <br />
-                    <br />
-                    <br /> 
-                    <br />
-                    <br />
-                    <h2 style={{ fontSize: '40px', marginBottom: '2rem' }}>
+                    {window.innerWidth >= 768 && (
+                        <>
+                        <br />
+                        <br />
+                            <br />
+                            <br />
+                            <br />
+                        </>
+                    )}
+                    <H2>
                         Hi, How's it going?
-                    </h2>
+                    </H2>
 
                     <h3 id="hero-quote">
                         "There are those who need to be told what to do and there are those who figure it out with grit."
@@ -103,7 +121,13 @@ const Bio = () => {
                     <br />
                     <br />
                     <br />
-                    <br />
+                    {window.innerWidth >= 768 && (
+                        <>
+                            <br />
+                            <br />
+                            <br />
+                        </>
+                    )}
                 </ScrollableContent>
                 <FadeBottom />
             </FadeContainer>

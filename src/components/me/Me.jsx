@@ -14,7 +14,7 @@ const Container = styled.div`
     align-items: center;
 
     @media (max-width: 768px) {
-        flex-direction: column;
+        flex-direction: column-reverse;
         margin-right: 0rem;
         margin-left: 0rem;
     }

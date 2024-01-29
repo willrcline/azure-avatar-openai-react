@@ -8,7 +8,7 @@ const Portrait = () => {
         height: 80vh;
 
         @media (max-width: 768px) {
-            height: 50vh;
+            height: 60vh;
 
         }
     `;

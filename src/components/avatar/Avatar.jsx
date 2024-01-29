@@ -19,9 +19,9 @@ export const Avatar = () => {
         <div className="container" style={styles.myAvatarContainer}>
             <div style={{ display: 'flex', flexDirection: "column", alignItems: 'center' }}>
                 <AvatarContext.Provider value={{inProgress, setInProgress, sessionStarted, setSessionStarted, avatarSynthesizer, setAvatarSynthesizer, myAvatarAudioEleRef, myAvatarVideoEleRef}}>
+                    <TriggerStart />
                     <div style={{display:"flex", flexDirection:"column", justifyContent: "center"}}>
                         <AvatarVideo />
-                        <TriggerStart />
                         <div style={{ height:60, display: "flex", flexDirection: "column", alignItems: "center", }}>
                             {/* {sessionStarted && <HorizontalToggle inputMode={inputMode} setInputMode={setInputMode}/>} */}
                             {sessionStarted && inputMode === "voice" && <Audio />}

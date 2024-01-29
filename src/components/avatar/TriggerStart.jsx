@@ -59,7 +59,7 @@ const TriggerStart = () => {
                     fontSize: 14, 
                     font: "Inter Variable", 
                     opacity: .3, 
-                    zIndex: 100,
+                    zIndex: 101,
                 }} 
                 onClick={handleStartSession}
                 >

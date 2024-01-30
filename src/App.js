@@ -29,6 +29,7 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     display: flex;
+    flexDirection: column;
     justify-content: center;
     align-items: center;
     height: 90vh;

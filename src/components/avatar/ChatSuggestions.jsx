@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import Colors from "../../helper/Colors.js";
 import { useInputPipeline } from "../../helper/hooks/useInputPipeline.js";
+import styled from 'styled-components';
 
 const chatSuggestions = [
     "What stands out in Will's resume?",
@@ -21,6 +22,27 @@ const chatSuggestions = [
     "Any 'red flags' on Will's resume?",
     "Will's greatest professional achievement?"
 ];
+
+const StyledButton = styled.button`
+  border: 1px solid ${Colors.lightGray};
+  background: ${props => props.isHovered ? Colors.lightGray : 'none'};
+  padding: 4px;
+  margin: 1px;
+  font-size: 14px;
+  color: ${Colors.warmBlack};
+  cursor: pointer;
+  border-radius: 10px;
+  text-align: left;
+
+  // If you need to respond to hover with styled-components and not rely on state:
+  &:hover {
+    background: ${Colors.lightGray};
+  }
+
+  @media (max-width: 600px) {
+    font-size: 12px;
+  }
+`;
 
 const ChatSuggestions = ({setMyInputText, chatHistory, setChatHistory}) => {
     const [buttonTexts, setButtonTexts] = useState([]);
@@ -50,26 +72,26 @@ const ChatSuggestions = ({setMyInputText, chatHistory, setChatHistory}) => {
         setHoveredButtonIndex(null);
     };
 
+    const isMobile = window.innerWidth < 600;
+    const gapSize = isMobile ? 4 : 8;
+
     return (
         <div>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
-                    {buttonTexts.map((text, index) => (
-                        <button
-                            key={index}
-                            style={{
-                                ...styles.buttonStyle,
-                                background: hoveredButtonIndex === index ? Colors.lightGray : 'none'
-                            }}
-                            onClick={() => handleButtonClick(text)}
-                            onMouseEnter={() => handleButtonHover(index)}
-                            onMouseLeave={handleButtonLeave}
-                        >
-                            {text}
-                        </button>
-                    ))}
-                </div>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: gapSize }}>
+            {buttonTexts.map((text, index) => (
+              <StyledButton
+                key={index}
+                isHovered={hoveredButtonIndex === index} // Pass in prop to indicate hover state
+                onClick={() => handleButtonClick(text)}
+                onMouseEnter={() => handleButtonHover(index)}
+                onMouseLeave={handleButtonLeave}
+              >
+                {text}
+              </StyledButton>
+            ))}
+          </div>
         </div>
-    );
+      );
 };
 
 const styles = {

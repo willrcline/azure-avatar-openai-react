@@ -12,7 +12,7 @@ const [page, setPage] = useState(0);
 
 
   return (
-    <div styles={{overflowY: 'auto'}} onScroll={()=>{console.log("scrolled___")}}>
+    <div style={{padding: 0, margin: 0}} onScroll={()=>{console.log("scrolled___")}}>
       <GlobalStyle/>
       <VerticalToggle page={page} setPage={setPage} />
       {page === 0 && <Avatar/>}
@@ -26,6 +26,12 @@ const [page, setPage] = useState(0);
 const GlobalStyle = createGlobalStyle`
   body {
     background-color: ${Colors.offWhite};
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
   }
 `;
 

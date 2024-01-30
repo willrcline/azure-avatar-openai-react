@@ -33,6 +33,7 @@ const GlobalStyle = createGlobalStyle`
     justify-content: center;
     align-items: center;
     height: 90vh;
+    overflow-y: scroll;
   }
 `;
 

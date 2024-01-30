@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 const Container = styled.div`
     height: 100%; 
-    margin-top: 2rem; 
+    margin-top: 2rem;
     margin-right: 4rem;
     margin-left: 4rem;
     display: flex; 
@@ -17,6 +17,7 @@ const Container = styled.div`
         flex-direction: column-reverse;
         margin-right: 0rem;
         margin-left: 0rem;
+        margin-bottom: 3rem;
     }
 `;
 

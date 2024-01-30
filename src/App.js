@@ -19,7 +19,7 @@ const [page, setPage] = useState((isMobile) ? 1 : 0);
       <VerticalToggle page={page} setPage={setPage} />
       
       {page === 0 && !isMobile && <Avatar/>}
-      {page === 0 && isMobile && <Placeholder/>}
+      {page === 0 && isMobile && <Placeholder setPage={setPage}/>}
       {page === 1 && <Me/>}
       <Footer/>
       {/* {page === 1 && <RaisedFooter/>} */}

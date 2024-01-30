@@ -1,12 +1,45 @@
-// import { useState } from "react";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { AvatarContext } from "./Avatar.jsx";
+import styled from 'styled-components';
 import Colors from "../../helper/Colors.js";
 
+// Define your styled components outside of your component
+const MyAvatarVideoContainer = styled.div`
+  margin-top: 4rem;
+  height: 30rem;
+  width: 26rem;
+  border-radius: 8px;
+  @media (max-width: 600px) {
+    height: 22rem;
+    width: 20rem;
+    margin-top: .25rem;
+    }
+`;
+
+const MyVideoDiv = styled.div`
+  height: 30rem;
+  width: 26rem;
+  position: relative;
+  margin-bottom: 2rem;
+  @media (max-width: 600px) {
+    height: 22rem;
+    width: 20rem;
+    }
+`;
+
+const Video = styled.video`
+  margin: 0px 0px 20px 0px;
+  height: 30rem;
+  width: 26rem;
+  border-radius: 8px;
+  @media (max-width: 600px) {
+    height: 22rem;
+    width: 20rem;
+    }
+`;
 
 const AvatarVideo = () => {
     const {sessionStarted, myAvatarAudioEleRef, myAvatarVideoEleRef} = useContext(AvatarContext);
-
     const overlayStyle = {
         ...styles.overlay,
         opacity: !sessionStarted ? 1 : 0, // Control the opacity based on sessionStarted
@@ -14,37 +47,16 @@ const AvatarVideo = () => {
     };
 
     return (
-    <div style={styles.myAvatarVideoContainer}>
-        <div id="myAvatarVideo" style={styles.myVideoDiv}>
-            <div style={overlayStyle} />
-
-            <video style={styles.video} ref={myAvatarVideoEleRef}>
-
-            </video>
-
-            <audio ref={myAvatarAudioEleRef}>
-
-            </audio>
-        </div>
-           
-        </div>
-    )
+        <MyAvatarVideoContainer>
+            <MyVideoDiv>
+                <div style={overlayStyle} />
+                <Video ref={myAvatarVideoEleRef} />
+                <audio ref={myAvatarAudioEleRef} />
+            </MyVideoDiv>
+        </MyAvatarVideoContainer>
+    );
 }
-
 const styles = {
-    myAvatarVideoContainer: {
-        marginTop: '4rem',
-        height: '30rem',
-        width: '26rem',
-        borderRadius: '8px',
-        // padding: '3rem',
-    },
-    myVideoDiv: {
-        height: '30rem',
-        width: '26rem',
-        position: 'relative',
-        marginBottom: '2rem',
-    },
     overlay: {
         position: 'absolute',
         top: 0,
@@ -55,13 +67,6 @@ const styles = {
         opacity: 0.8, // Adjust for desired overlay opacity
         transition: 'opacity 2s ease-in-out',
         zIndex: 100, // Ensure it's above other content
-    },
-    video: {
-        margin: '0px 0px 20px 0px',
-        // paddingRight: '5rem',
-        height: '30rem',
-        width: '26rem',
-        borderRadius: '8px',
     },
 }
 

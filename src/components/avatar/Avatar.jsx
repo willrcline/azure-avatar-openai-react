@@ -4,8 +4,20 @@ import ChatBox from "./ChatBox";
 import TriggerStart from "./TriggerStart";
 import Audio from "./Audio";
 import HorizontalToggle from "./HorizontalToggle";
+import styled from "styled-components";
 
 export const AvatarContext = createContext(null);
+
+const Spacer = styled.div`
+    height: 60px;
+    display: flex;
+    flexDirection: colunm;
+    align-items: center;
+    
+    @media (max-width: 600px) {
+        height: 15px;
+    }
+`;
 
 export const Avatar = () => {
     const [avatarSynthesizer, setAvatarSynthesizer] = useState(null);
@@ -22,10 +34,10 @@ export const Avatar = () => {
                     <TriggerStart />
                     <div style={{display:"flex", flexDirection:"column", justifyContent: "center"}}>
                         <AvatarVideo />
-                        <div style={{ height:60, display: "flex", flexDirection: "column", alignItems: "center", }}>
+                        <Spacer>
                             {/* {sessionStarted && <HorizontalToggle inputMode={inputMode} setInputMode={setInputMode}/>} */}
-                            {sessionStarted && inputMode === "voice" && <Audio />}
-                        </div>
+                            {/* {sessionStarted && inputMode === "voice" && <Audio />} */}
+                        </Spacer>
                     </div>
                     {sessionStarted && inputMode === "text" && <ChatBox />}
                 </AvatarContext.Provider>
@@ -37,6 +49,8 @@ export const Avatar = () => {
 const styles = {
     myAvatarContainer: {
         textAlign: 'center',
+        display: 'flex',
+        flexDirection: 'column',
         // marginTop: '5rem',
     },
 }

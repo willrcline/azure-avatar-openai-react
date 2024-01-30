@@ -28,11 +28,12 @@ const styles = {
         backgroundColor: Colors.lightGray,
         borderRadius: '5px',
         position: 'fixed',
-        right: '0',
+        right: '0rem',
         top: '50%',
         transform: 'translateY(-50%)',
         margin: '10px',
-        cursor: 'pointer' // Added for better UX
+        cursor: 'pointer',
+        zIndex: 101
     },
     commonBarStyle: {
         width: '100%',

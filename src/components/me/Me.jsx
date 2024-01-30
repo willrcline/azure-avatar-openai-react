@@ -13,7 +13,7 @@ const Container = styled.div`
     justify-content: center; 
     align-items: center;
 
-    @media (max-width: 768px) {
+    @media (max-width: 600px) {
         flex-direction: column-reverse;
         margin-right: 0rem;
         margin-left: 0rem;

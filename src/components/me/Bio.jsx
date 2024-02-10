@@ -7,15 +7,17 @@ import styled from 'styled-components';
 const BioText = () => {
     return (
         <p>
+            Hi, I'm Will. I specialize in AI integrated full stack software development.
+            <br /><br />
             I find large challenges exciting and enjoy discovering and defining problems as much as solving them.
-        I deliver. I may enjoy thoughtful conversations about problems and perfecting designs, but in the end, I know that what matters is delivering a solution that works every time.
-        I am resourceful, flexible and adaptable; no task is too big or too small.
-        I am capable of working with imperfect information and solving problems under pressure.
-        <br/><br/>
-        With exceptional data science and full stack software engineering skills, including RPA and AI, I can automate complex processes, build robust software and front end solutions. I back my technical expertise with proven product management abilities and excellent communication and teamwork skills.
-        <br/><br/>
-        Based in Austin, Texas, I'm available for online or face-to-face meetings to discuss your work. Let's explore how I can assist you technically or connect you with my network.
-            </p>
+            I deliver. I may enjoy thoughtful conversations about problems and perfecting designs, but in the end, I know that what matters is delivering a solution that works every time.
+            I am resourceful, flexible and adaptable; no task is too big or too small.
+            I am capable of working with imperfect information and solving problems under pressure.
+            <br /><br />
+            With exceptional full stack software engineering and data science skills, including RPA and AI, I can automate complex processes, build robust software and front end solutions. I back my technical expertise with proven product management abilities and excellent communication and teamwork skills.
+            <br /><br />
+            Based in Austin, Texas, I'm available for online or face-to-face meetings to discuss your work. Let's explore how I can assist you technically or connect you with my network.
+        </p>
     )
 }
 

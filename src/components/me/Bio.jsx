@@ -27,6 +27,7 @@ const Container = styled.div`
     justify-content: center;
     align-items: center;
     padding: 1rem;
+    margin-top: 2.6rem;
     margin-bottom: 8rem;
     width: 25%;
     height: 50%;
@@ -40,14 +41,14 @@ const Container = styled.div`
 
 const FadeContainer = styled.div`
     position: relative;
-    height: 550px; /* Same as scrollableContent height */
+    height: 68vh; /* Same as scrollableContent height */
     @media (max-width: 600px) {
         height: 195px
     }
 `;
 
 const ScrollableContent = styled.div`
-    height: 550px; /* Adjust as needed */
+    height: 68vh; /* Adjust as needed */
     overflow-y: auto;
     text-align: left;
     position: relative;
@@ -101,13 +102,14 @@ const Bio = () => {
     return (
         <Container>
             <FadeContainer>
-                 <FadeTop />
+                <FadeTop />
                 <ScrollableContent className='scrollableContent'>
                     <br />
                     <br />
                     <br />
                     {window.innerWidth >= 600 && (
                         <>
+                            <br />
                             <br />
                             <br />
                             <br />
@@ -131,6 +133,14 @@ const Bio = () => {
                     <br />
                     {window.innerWidth >= 600 && (
                         <>
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
                             <br />
                             <br />
                             <br />

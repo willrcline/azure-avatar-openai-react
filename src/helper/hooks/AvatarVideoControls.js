@@ -37,11 +37,29 @@ function useStartSession() {
             }
         };
 
-                var iceUrl = avatarAppConfig.iceUrl
-                var iceUsername = avatarAppConfig.iceUsername
-                var iceCredential = avatarAppConfig.iceCredential
+                // var iceUrl = avatarAppConfig.iceUrl
+                // var iceUsername = avatarAppConfig.iceUsername
+                // var iceCredential = avatarAppConfig.iceCredential
                 
-                let peerConnection = createWebRTCConnection(iceUrl,iceUsername, iceCredential);
+                // let peerConnection = createWebRTCConnection(iceUrl,iceUsername, iceCredential);
+
+                function createWebRTCConnection(iceServers) {
+                    let config = {
+                      iceServers: iceServers
+                    };
+                    return new RTCPeerConnection(config);
+                  }
+                  
+                  // Prepare the iceServers configuration with Google's STUN server
+                  let iceServers = [
+                    {
+                      urls: "stun:stun.l.google.com:19302"
+                    }
+                  ];
+                  
+                  // Create the WebRTC connection with the new configuration
+                  let peerConnection = createWebRTCConnection(iceServers);
+
                 peerConnection.onicecandidate = event => {
                     console.log("ICE candidate:", event.candidate);
                 };

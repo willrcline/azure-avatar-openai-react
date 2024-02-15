@@ -1,7 +1,8 @@
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import { AvatarContext } from "./Avatar.jsx";
 import styled from 'styled-components';
 import Colors from "../../helper/Colors.js";
+import Warning from "./Warning.jsx";
 
 // Define your styled components outside of your component
 const MyAvatarVideoContainer = styled.div`
@@ -46,10 +47,13 @@ const AvatarVideo = () => {
         pointerEvents: 'none', // Enable or disable pointer events based on sessionStarted
     };
 
+   
+
     return (
         <MyAvatarVideoContainer>
             <MyVideoDiv>
-                <div style={overlayStyle} />
+                <Warning sessionStarted={sessionStarted} myAvatarVideoEleRef={myAvatarVideoEleRef}/>
+                <div style={overlayStyle}/>
                 <Video ref={myAvatarVideoEleRef} />
                 <audio ref={myAvatarAudioEleRef} />
             </MyVideoDiv>

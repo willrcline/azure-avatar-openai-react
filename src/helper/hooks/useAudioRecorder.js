@@ -5,7 +5,7 @@ function useAudioRecorder({ setChatState, setAudioURL }) {
 
   const handleDataAvailable = useCallback((event) => {
     if (event.data.size > 0) {
-      setAudioURL(URL.createObjectURL(event.data));
+      setAudioURL(event.data);
     }
   }, [setAudioURL]);
 
@@ -23,9 +23,9 @@ function useAudioRecorder({ setChatState, setAudioURL }) {
 
   const handleStopRecording = useCallback(() => {
     console.log("Audio.jsx handleStopRecording___");
+    setChatState("loading");
     if (mediaRecorderRef.current) {
       mediaRecorderRef.current.stop();
-      setChatState("loading");
     }
   }, [setChatState]);
 

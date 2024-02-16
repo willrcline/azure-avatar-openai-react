@@ -8,36 +8,26 @@ import styled from "styled-components";
 
 export const AvatarContext = createContext(null);
 
-const Spacer = styled.div`
-    height: 60px;
-    display: flex;
-    flexDirection: colunm;
-    align-items: center;
-    
-    @media (max-width: 600px) {
-        height: 15px;
-    }
-`;
+
 
 export const Avatar = () => {
+    const [chatState, setChatState] = useState("idle");
     const [avatarSynthesizer, setAvatarSynthesizer] = useState(null);
     const [sessionStarted, setSessionStarted] = useState(false)
-    const [inProgress, setInProgress] = useState(false)
-    const [inputMode, setInputMode] = useState('text'); // ['voice', 'type'
     const myAvatarVideoEleRef = useRef();
     const myAvatarAudioEleRef = useRef();
 
     return(
         <div className="container" style={styles.myAvatarContainer}>
             <div style={{ display: 'flex', flexDirection: "column", alignItems: 'center' }}>
-                <AvatarContext.Provider value={{inProgress, setInProgress, sessionStarted, setSessionStarted, avatarSynthesizer, setAvatarSynthesizer, myAvatarAudioEleRef, myAvatarVideoEleRef}}>
+                <AvatarContext.Provider value={{chatState, setChatState, sessionStarted, setSessionStarted, avatarSynthesizer, setAvatarSynthesizer, myAvatarAudioEleRef, myAvatarVideoEleRef}}>
                     <TriggerStart />
-                    <div style={{display:"flex", flexDirection:"column", justifyContent: "center"}}>
-                        <AvatarVideo />
-                        <Spacer style={{ position: 'relative', display:"flex", flexDirection:"column", justifyContent: "space-between"}}>
+                        {/* <Spacer style={{ position: 'relative', display:"flex", flexDirection:"column", justifyContent: "space-between"}}>
                             {sessionStarted && <HorizontalToggle inputMode={inputMode} setInputMode={setInputMode}/>}
                             {sessionStarted && inputMode === "voice" && <Audio />}
-                        </Spacer>
+                        </Spacer> */}
+                    <div style={{display:"flex", flexDirection:"column", justifyContent: "center"}}>
+                        <AvatarVideo />
                     </div>
                     {sessionStarted && <ChatBox />}
                     {/* {sessionStarted && inputMode === "text" && <ChatBox />} */}

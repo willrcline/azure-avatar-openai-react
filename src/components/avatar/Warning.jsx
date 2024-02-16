@@ -40,7 +40,7 @@ const Warning = ({ sessionStarted, myAvatarVideoEleRef }) => {
     return (
         <>
             {showWarning && 
-                <p style={{zIndex: 102, position: "absolute", color: Colors.warmBlack }}>
+                <p style={{zIndex: 102, opacity: .1, font: "Inter Variable", position: "absolute", color: Colors.warmBlack }}>
                     We're having trouble rendering your experience.<br/>Please make sure you have a strong internet connection and disable any plugins that may be blocking the video.
                 </p>
             }

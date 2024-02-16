@@ -8,7 +8,7 @@ import fetchOpenAi from "../../service/fetchOpenAi.js";
 
 const TriggerStart = () => {
     const [clicked, setClicked] = useState(false);
-    const {sessionStarted, setInProgress} = useContext(AvatarContext);
+    const {sessionStarted, setChatState} = useContext(AvatarContext);
     const speakText = useSpeakSelectedText();
     const startSession = useStartSession()
     const [greetingText, setGreetingText] = useState("Hi, I'm Mae, Will's AI professional advocate. How can I help you?");
@@ -32,7 +32,7 @@ const TriggerStart = () => {
     const handleStartSession = async () => {
         setClicked(true);
         startSession();
-        setInProgress(true);
+        setChatState("loading");
         var text = await fetchGreetingText();
         setGreetingText(text)
     }

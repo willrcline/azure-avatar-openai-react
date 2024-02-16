@@ -3,7 +3,7 @@ import { AvatarContext } from "../../components/avatar/Avatar"
 import * as SpeechSDK from "microsoft-cognitiveservices-speech-sdk";
 
 function useSpeakSelectedText() {
-    const { avatarSynthesizer, myAvatarAudioEleRef, setInProgress } = useContext(AvatarContext);
+    const { avatarSynthesizer, myAvatarAudioEleRef, setChatState } = useContext(AvatarContext);
 
     const speakText = (text) => {
         // Start speaking the text
@@ -11,11 +11,12 @@ function useSpeakSelectedText() {
         console.log("Audio muted status ", audioPlayer.muted);
         audioPlayer.muted = false;
 
+        setChatState("speaking");
         avatarSynthesizer.speakTextAsync(text).then(
             (result) => {
                 if (result.reason === SpeechSDK.ResultReason.SynthesizingAudioCompleted) {
                     console.log("Speech and avatar synthesized to video stream.");
-                    setInProgress(false);
+                    setChatState("idle");
                 } else {
                     console.log("Unable to speak. Result ID: " + result.resultId);
                     if (result.reason === SpeechSDK.ResultReason.Canceled) {

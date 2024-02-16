@@ -8,13 +8,12 @@ import { useAudioRecorder } from "../../helper/hooks/useAudioRecorder.js";
 import AudioToggle from "./AudioToggle";
 
 const Audio = () => {
-  const [chatState, setChatState] = useState("idle");
   const [audioURL, setAudioURL] = useState('');
-  const { sessionStarted } = useContext(AvatarContext);
+  const { sessionStarted, chatState, setChatState } = useContext(AvatarContext);
   const startAvatar = useStartAvatar();
   const { handleStartRecording, handleStopRecording } = useAudioRecorder({ setChatState , setAudioURL });
-
-  const userId = uuidv4()
+  const [userId, setUserId] = useState(uuidv4());
+  // const userId = uuidv4()
 
 
     useEffect(() => {
@@ -22,7 +21,8 @@ const Audio = () => {
         if (audioURL === '') return;
 
         const fetchChatCompletion = async () => {
-          var chatCompletion = await fetchVoiceToChatCompletion({uri: audioURL, userId});
+          var response = await fetchVoiceToChatCompletion({uri: audioURL, userId});
+          var chatCompletion = response.chatCompletion
           startAvatar(chatCompletion);
         };
 
@@ -45,9 +45,9 @@ const Audio = () => {
       };
 
       return (
-        <div style={styles.container}>
+        // <div style={styles.container}>
           <AudioToggle handleAudioToggle={handleAudioToggle} chatState={chatState} />
-        </div>
+        // </div>
       );
   }
 

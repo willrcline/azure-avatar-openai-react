@@ -34,12 +34,13 @@ export const Avatar = () => {
                     <TriggerStart />
                     <div style={{display:"flex", flexDirection:"column", justifyContent: "center"}}>
                         <AvatarVideo />
-                        <Spacer>
-                            {/* {sessionStarted && <HorizontalToggle inputMode={inputMode} setInputMode={setInputMode}/>} */}
-                            {/* {sessionStarted && inputMode === "voice" && <Audio />} */}
+                        <Spacer style={{ position: 'relative', display:"flex", flexDirection:"column", justifyContent: "space-between"}}>
+                            {sessionStarted && <HorizontalToggle inputMode={inputMode} setInputMode={setInputMode}/>}
+                            {sessionStarted && inputMode === "voice" && <Audio />}
                         </Spacer>
                     </div>
-                    {sessionStarted && inputMode === "text" && <ChatBox />}
+                    {sessionStarted && <ChatBox />}
+                    {/* {sessionStarted && inputMode === "text" && <ChatBox />} */}
                 </AvatarContext.Provider>
             </div>
         </div>

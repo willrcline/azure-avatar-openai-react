@@ -1,72 +1,60 @@
 import {useState, useContext, useEffect, useRef} from "react";
 import Colors from "../../helper/Colors.js";
 import { AvatarContext } from "./Avatar.jsx";
+import fetchVoiceToChatCompletion from "../../helper/fetch/fetchVoiceToChatCompletion.js";
+import { v4 as uuidv4 } from 'uuid'; 
+import { useStartAvatar } from '../../helper/hooks/AvatarVideoControls.js'
+import { useAudioRecorder } from "../../helper/hooks/useAudioRecorder.js";
+import AudioToggle from "./AudioToggle";
 
 const Audio = () => {
-    const [recording, setRecording] = useState(false);
-    const [audioURL, setAudioURL] = useState('');
-    const { sessionStarted } = useContext(AvatarContext);
-    const mediaRecorderRef = useRef(null);
+  const [chatState, setChatState] = useState("idle");
+  const [audioURL, setAudioURL] = useState('');
+  const { sessionStarted } = useContext(AvatarContext);
+  const startAvatar = useStartAvatar();
+  const { handleStartRecording, handleStopRecording } = useAudioRecorder({ setChatState , setAudioURL });
+
+  const userId = uuidv4()
+
 
     useEffect(() => {
-        console.log("Audio.jsx audioUrl___", audioURL)
-    }, [audioURL])
+        console.log("Audio.jsx audioUrl___", audioURL);
+        if (audioURL === '') return;
+
+        const fetchChatCompletion = async () => {
+          var chatCompletion = await fetchVoiceToChatCompletion({uri: audioURL, userId});
+          startAvatar(chatCompletion);
+        };
+
+        fetchChatCompletion();
+    }, [audioURL]);
 
 
 
-    const startRecording = () => {
-        console.log("Audio.jsx startRecording___")
-        navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
-          mediaRecorderRef.current = new MediaRecorder(stream);
-          mediaRecorderRef.current.ondataavailable = handleDataAvailable;
-          mediaRecorderRef.current.start();
-          setRecording(true);
-        });
-      };
-      
-      const stopRecording = () => {
-        console.log("Audio.jsx stopRecording___")
-        mediaRecorderRef.current.stop();
-        setRecording(false);
-      };
-      
-      const handleDataAvailable = (event) => {
-        if (event.data.size > 0) {
-          setAudioURL(URL.createObjectURL(event.data));
+      const handleAudioToggle = () => {
+        switch (chatState) {
+          case "idle":
+            handleStartRecording();
+            break;
+          case "recording":
+            handleStopRecording();
+            break;
+          default:
+            console.log('Unhandled state:', chatState);
         }
       };
-      
 
-    return (
-        <>
-            {sessionStarted && !recording &&(
-            <p 
-                style = {styles.p} 
-                onClick={() => {startRecording()}}>
-                Click here to talk
-            </p>
-            )}
-            {sessionStarted && recording && (
-            <p 
-                style = {{ cursor: "pointer", color: Colors.gray, fontSize: 14, font: "Inter Variable", opacity: .3 }} 
-                onClick={() => {stopRecording()}}>
-                Listening
-            </p>
-            )}
-        </>
-    )
-}
+      return (
+        <div style={styles.container}>
+          <AudioToggle handleAudioToggle={handleAudioToggle} chatState={chatState} />
+        </div>
+      );
+  }
 
 const styles = {
-    p: {
-        cursor: "pointer",
-        color: Colors.gray,
-        fontSize: "14px",
-        fontFamily: "Inter Variable", // Note: Changed 'font' to 'fontFamily'
-        // opacity: opacity, // Apply dynamic opacity
-        opacity: .3,
-        transition: "opacity 0.5s ease-in-out",
-    }
+    container: {
+    },
 }
+    
 
 export default Audio

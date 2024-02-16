@@ -7,15 +7,17 @@ import styled from 'styled-components';
 const BioText = () => {
     return (
         <p>
+            Hi, I'm Will. I specialize in AI integrated full stack software development.
+            <br /><br />
             I find large challenges exciting and enjoy discovering and defining problems as much as solving them.
-        I deliver. I may enjoy thoughtful conversations about problems and perfecting designs, but in the end, I know that what matters is delivering a solution that works every time.
-        I am resourceful, flexible and adaptable; no task is too big or too small.
-        I am capable of working with imperfect information and solving problems under pressure.
-        <br/><br/>
-        With exceptional data science and full stack software engineering skills, including RPA and AI, I can automate complex processes, build robust software and front end solutions. I back my technical expertise with proven product management abilities and excellent communication and teamwork skills.
-        <br/><br/>
-        Based in Austin, Texas, I'm available for online or face-to-face meetings to discuss your work. Let's explore how I can assist you technically or connect you with my network.
-            </p>
+            I deliver. I may enjoy thoughtful conversations about problems and perfecting designs, but in the end, I know that what matters is delivering a solution that works every time.
+            I am resourceful, flexible and adaptable; no task is too big or too small.
+            I am capable of working with imperfect information and solving problems under pressure.
+            <br /><br />
+            With exceptional full stack software engineering and data science skills, including RPA and AI, I can automate complex processes, build robust software and front end solutions. I back my technical expertise with proven product management abilities and excellent communication and teamwork skills.
+            <br /><br />
+            Based in Austin, Texas, I'm available for online or face-to-face meetings to discuss your work. Let's explore how I can assist you technically or connect you with my network.
+        </p>
     )
 }
 
@@ -25,6 +27,7 @@ const Container = styled.div`
     justify-content: center;
     align-items: center;
     padding: 1rem;
+    margin-top: 2.6rem;
     margin-bottom: 8rem;
     width: 25%;
     height: 50%;
@@ -38,14 +41,14 @@ const Container = styled.div`
 
 const FadeContainer = styled.div`
     position: relative;
-    height: 550px; /* Same as scrollableContent height */
+    height: 68vh; /* Same as scrollableContent height */
     @media (max-width: 600px) {
         height: 195px
     }
 `;
 
 const ScrollableContent = styled.div`
-    height: 550px; /* Adjust as needed */
+    height: 68vh; /* Adjust as needed */
     overflow-y: auto;
     text-align: left;
     position: relative;
@@ -99,13 +102,14 @@ const Bio = () => {
     return (
         <Container>
             <FadeContainer>
-                 <FadeTop />
+                <FadeTop />
                 <ScrollableContent className='scrollableContent'>
                     <br />
                     <br />
                     <br />
                     {window.innerWidth >= 600 && (
                         <>
+                            <br />
                             <br />
                             <br />
                             <br />
@@ -129,6 +133,14 @@ const Bio = () => {
                     <br />
                     {window.innerWidth >= 600 && (
                         <>
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
                             <br />
                             <br />
                             <br />

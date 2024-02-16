@@ -9,9 +9,12 @@ import { FaHandSparkles } from "react-icons/fa";
 import { AvatarContext } from "./Avatar.jsx";
 import '../../assets/special.css';
 import styled from 'styled-components';
+import Audio from "./Audio";
+import HorizontalToggle from "./HorizontalToggle";
+import InputModeToggle from "./InputModeToggle.jsx";
 
 const Container = styled.div`
-    margin-top: 0rem;
+    margin-top: 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -27,7 +30,6 @@ const Container = styled.div`
 const TextAreaContainer = styled.div`
   height: 1.75rem;
   padding: 1.5rem;
-  margin-top: 2rem;
   display: flex;
   width: 29rem;
   position: relative;
@@ -53,6 +55,7 @@ const MyTextArea = styled.textarea`
   color: ${Colors.black};
   resize: none;
   outline: none;
+  font-size: 16px;
 @media (max-width: 600px) {
     font-size: 12px;
     width: 100%;
@@ -68,13 +71,15 @@ const SendButton = styled(FaHandSparkles)`
   color: ${Colors.black};
   cursor: pointer;
 `;
+
 const ChatBox = () => {
     const [myInputText, setMyInputText] = useState("");
+    const [inputMode, setInputMode] = useState('text'); // ['voice', 'type'
     const [chatHistory, setChatHistory] = useState([
         {"role": "system", "content": assistantPrompt()},
     ]);
     const inputPipeline = useInputPipeline({chatHistory, setChatHistory});
-    const { inProgress } = useContext(AvatarContext);
+    const { chatState, sessionStarted,  } = useContext(AvatarContext);
 
     const handleSendInput = async () => {
         setMyInputText("");
@@ -95,15 +100,31 @@ const ChatBox = () => {
 
     const overlayStyle = {
         ...styles.overlay,
-        opacity: inProgress ? 0.8 : 0, // Control the opacity based on inProgress
-        pointerEvents: inProgress ? 'auto' : 'none', // Enable or disable pointer events based on inProgress
+        opacity: (chatState === "loading" || chatState === "speaking") ? 0.8 : 0, // Control the opacity based on (chatState === "loading" || chatState === "speaking")
+        pointerEvents: (chatState === "loading" || chatState === "speaking") ? 'auto' : 'none', // Enable or disable pointer events based on (chatState === "loading" || chatState === "speaking")
     };
+
+    const Spacer = styled.div`
+    height: 60px;
+    display: flex;
+    flexDirection: colunm;
+    align-items: center;
+    
+    @media (max-width: 600px) {
+        height: 15px;
+    }
+`;
 
     
     return (
         <Container>
             <div style={overlayStyle} />
             <ChatSuggestions setMyInputText={setMyInputText} chatHistory={chatHistory} setChatHistory={setChatHistory}/>
+            <Spacer style={{ position: 'relative', display:"flex", flexDirection:"column", justifyContent: "space-between"}}>
+                {sessionStarted && <InputModeToggle inputMode={inputMode} setInputMode={setInputMode}/>}
+                {/* {sessionStarted && inputMode === "voice" && <Audio />} */}
+            </Spacer>
+            {(inputMode === "text") && (
             <TextAreaContainer>
                 <MyTextArea 
                     className="scrollableContent"
@@ -116,6 +137,10 @@ const ChatBox = () => {
                     <SendButton onClick={handleSendInput} size={30} />
                 )}
             </TextAreaContainer>
+            )}
+            {(inputMode === "voice") && (
+                <Audio />
+            )}
         </Container>
     )
 }

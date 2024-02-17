@@ -5,8 +5,6 @@ import { useStartSession } from "../../helper/hooks/AvatarVideoControls.js";
 import Colors from "../../helper/Colors.js";
 import { greetingPrompt } from "../../helper/promptFactory.js";
 import fetchOpenAi from "../../service/fetchOpenAi.js";
-import customCursor from "../../assets/cursor.png";
-
 const TriggerStart = () => {
     const [clicked, setClicked] = useState(false);
     const {sessionStarted, setChatState} = useContext(AvatarContext);
@@ -47,7 +45,7 @@ const TriggerStart = () => {
                     left: '50%', /* Center horizontally */
                     transform: 'translate(-50%, -50%)', // 
                     zIndex: 101,
-                    
+                    maxWidth: "35rem",
                 }}>
                     <p style={{
                         color: Colors.black,

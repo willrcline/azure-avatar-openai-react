@@ -5,7 +5,7 @@ import { useStartSession } from "../../helper/hooks/AvatarVideoControls.js";
 import Colors from "../../helper/Colors.js";
 import { greetingPrompt } from "../../helper/promptFactory.js";
 import fetchOpenAi from "../../service/fetchOpenAi.js";
-import customCursor from "../../assets/cursor.png";
+import customCursor from "../../assets/cursor.png"
 
 const TriggerStart = () => {
     const [clicked, setClicked] = useState(false);
@@ -47,6 +47,7 @@ const TriggerStart = () => {
                     left: '50%', /* Center horizontally */
                     transform: 'translate(-50%, -50%)', // 
                     zIndex: 101,
+                    maxWidth: "35rem"
                     
                 }}>
                     <p style={{
@@ -65,7 +66,7 @@ const TriggerStart = () => {
                     </p>
                     <p 
                     style = {{
-                        cursor: "pointer", 
+                        cursor: `url(${customCursor}), pointer`,
                         color: Colors.warmBlack, 
                         fontSize: 16, 
                         font: "Inter Variable", 

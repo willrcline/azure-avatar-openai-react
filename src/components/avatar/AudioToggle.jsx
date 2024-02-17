@@ -64,7 +64,8 @@ const styles = {
     // fontWeight: "bold",
     zIndex: 2,
     fontSize: 16,
-    font: "Inter Variable",
+    fontFamily: 'Inter', 
+    fontWeight: 400,
     // opacity: opacity, // Apply dynamic opacity
     opacity: .3,
     transition: "opacity 0.5s ease-in-out",

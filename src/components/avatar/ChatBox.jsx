@@ -56,6 +56,8 @@ const MyTextArea = styled.textarea`
   resize: none;
   outline: none;
   font-size: 16px;
+  font-family: 'Inter';
+  font-weight: 400;
 @media (max-width: 600px) {
     font-size: 12px;
     width: 100%;

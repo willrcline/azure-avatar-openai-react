@@ -12,9 +12,36 @@ function App() {
 const isMobile = window.innerWidth < 600;
 const [page, setPage] = useState((isMobile) ? 1 : 0);
 
+useEffect(() => {
+  const handleWheel = (event) => {
+
+    const isDescendantOrDiv = event.target.closest('.sc-kFCroH.dYRMtt');
+    if (isDescendantOrDiv) {
+      // console.log('app.js isDescendantOrDiv___', isDescendantOrDiv);
+      return; // Don't prevent default if the target is a descendant or is the div with class "sc-kFCroH dYRMtt"
+    }
+    event.preventDefault();
+
+    const direction = event.deltaY;
+
+    if (direction > 2 || direction < -2) {
+      setPage(prevPage => direction > 0 ? 1 : 0);
+    } else {
+      return; 
+    }
+  };
+
+
+  window.addEventListener('wheel', handleWheel, { passive: false });
+
+  return () => {
+    window.removeEventListener('wheel', handleWheel);
+  };
+}, []);
+
 
   return (
-    <div style={{padding: 0, margin: 0}} onScroll={()=>{console.log("scrolled___")}}>
+    <div style={{padding: 0, margin: 0}} >
       <GlobalStyle/>
       <VerticalToggle page={page} setPage={setPage} />
       

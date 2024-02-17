@@ -34,7 +34,7 @@ const styles = {
         cursor: "pointer",
         marginLeft: "2px",
         marginRight: "2px",
-        color: Colors.black
+        color: Colors.warmBlack
     }
 }
 

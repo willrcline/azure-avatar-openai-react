@@ -5,6 +5,7 @@ import { useStartSession } from "../../helper/hooks/AvatarVideoControls.js";
 import Colors from "../../helper/Colors.js";
 import { greetingPrompt } from "../../helper/promptFactory.js";
 import fetchOpenAi from "../../service/fetchOpenAi.js";
+import customCursor from "../../assets/cursor.png";
 
 const TriggerStart = () => {
     const [clicked, setClicked] = useState(false);
@@ -12,19 +13,10 @@ const TriggerStart = () => {
     const speakText = useSpeakSelectedText();
     const startSession = useStartSession()
     const [greetingText, setGreetingText] = useState("Hi, I'm Mae, Will's AI professional advocate. How can I help you?");
-    
+    const [isHovered, setIsHovered] = useState(false);
 
     useEffect(() => {
         if (sessionStarted) {
-            // const async = async () => {
-            //     const prompt = [
-            //         {"role": "system", "content": greetingPrompt()},
-            //     ];
-            //     var response = await fetchOpenAi({chatHistory: prompt});
-            //     console.log("TriggerStart.jsx response___", response);
-            //     speakText(response);
-            // }
-            // async();
             speakText(greetingText);
         };
     }, [sessionStarted]);
@@ -48,28 +40,48 @@ const TriggerStart = () => {
     return (
         <>
             {!clicked && (
-                <p 
-                style = {{
+                <div 
+                style={{
                     position: 'fixed',
                     top: '50%', /* Center vertically */
                     left: '50%', /* Center horizontally */
-                    transform: 'translate(-50%, -50%)', // Corrected line
-                    cursor: "pointer", 
-                    color: Colors.gray, 
-                    fontSize: 16, 
-                    font: "Inter Variable", 
-                    opacity: .35, 
+                    transform: 'translate(-50%, -50%)', // 
                     zIndex: 101,
-                }} 
-                onClick={handleStartSession}
-                >
-                    Wondering if you should hire me or contract me for a project?<br/>
-                    Click here to talk to Maye.<br/>
-                    {/* She’s been designed to represent me and showcase my skills and accomplishments */}
+                    
+                }}>
+                    <p style={{
+                        color: Colors.black,
+                        fontSize: 20,
+                        lineHeight: "1.5rem",
+                        font: "Inter Variable",
+                        textAlign: "justify",
+                        fontWeight: 700,
+                        // opacity: .35,
+                        marginBottom: "2.5rem",
+                    }}> 
+                    Wondering if you should hire me or contract me for a project?<br/><br/>
+                    This simulation has been designed to represent me and showcase my skills and accomplishments in a unique and interactive way.
+                        
+                    </p>
+                    <p 
+                    style = {{
+                        cursor: "pointer", 
+                        color: Colors.warmBlack, 
+                        fontSize: 16, 
+                        font: "Inter Variable", 
+                        // opacity: isHovered ? 0.5 : 0.35, 
+                        zIndex: 101,
+                    }} 
+                    onClick={handleStartSession}
+                    onMouseEnter={() => setIsHovered(true)}
+                    onMouseLeave={() => setIsHovered(false)}
+                    >
+                        Click here to Begin.<br/>
 
-                    {/* She's my AI Professional Representative. */}
+                        {/* She's my AI Professional Representative. */}
 
-                </p>
+                    </p>
+                </div>
             )} 
         </>
     )

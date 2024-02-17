@@ -33,6 +33,8 @@ const StyledButton = styled.button`
   cursor: pointer;
   border-radius: 10px;
   text-align: left;
+  font-family: 'Inter';
+  font-weight: 400;
 
   // If you need to respond to hover with styled-components and not rely on state:
   &:hover {

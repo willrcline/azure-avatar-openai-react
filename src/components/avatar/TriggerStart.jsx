@@ -63,7 +63,13 @@ const TriggerStart = () => {
                 }} 
                 onClick={handleStartSession}
                 >
-                    Click here to begin
+                    Hi there! Welcome to my homepage.<br/>
+                    Wondering if you should hire me or contract me for a project?<br/>
+                    Click here to talk to Maye.<br/>
+                    She’s been designed to represent me and showcase my skills and accomplishments in a unique and interactive way.
+
+                    {/* She's my AI Professional Representative. */}
+
                 </p>
             )} 
         </>

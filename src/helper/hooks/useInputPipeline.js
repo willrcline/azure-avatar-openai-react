@@ -5,10 +5,10 @@ import { AvatarContext } from "../../components/avatar/Avatar";
 
 const useInputPipeline = ({chatHistory, setChatHistory}) => {
     const startAvatar = useStartAvatar();
-    const { setInProgress } = useContext(AvatarContext);
+    const { setChatState } = useContext(AvatarContext);
 
     const inputPipeline = async (input) => {
-        setInProgress(true)
+        setChatState("loading")
         var inputObj = { "role": "user", "content": input };
         console.log('useInputPipeline Current chatHistory___', chatHistory); // Add this line
         var updatedChatHistory = [...chatHistory, inputObj];

@@ -17,6 +17,7 @@ useEffect(() => {
 
     const isDescendantOrDiv = event.target.closest('.sc-kFCroH.dYRMtt');
     if (isDescendantOrDiv) {
+      // console.log('app.js isDescendantOrDiv___', isDescendantOrDiv);
       return; // Don't prevent default if the target is a descendant or is the div with class "sc-kFCroH dYRMtt"
     }
     event.preventDefault();

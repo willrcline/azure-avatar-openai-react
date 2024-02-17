@@ -2,6 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import Colors from "../../helper/Colors.js";
 import { useInputPipeline } from "../../helper/hooks/useInputPipeline.js";
 import styled from 'styled-components';
+import customCursor from "../../assets/cursor.png"
 
 const chatSuggestions = [
     "What stands out in Will's resume?",
@@ -30,7 +31,7 @@ const StyledButton = styled.button`
   margin: 1px;
   font-size: 14px;
   color: ${Colors.warmBlack};
-  cursor: pointer;
+  cursor: url(${customCursor}), pointer;
   border-radius: 10px;
   text-align: left;
   font-family: 'Inter';
@@ -104,7 +105,8 @@ const styles = {
         margin: '1px',
         fontSize: '14px',
         color: Colors.warmBlack,
-        cursor: 'pointer',
+        // cursor: 'pointer',
+        cursor: `url(${customCursor}), pointer`,
         borderRadius: '10px',
         textAlign: 'left',
     }

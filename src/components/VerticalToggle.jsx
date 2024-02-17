@@ -1,5 +1,6 @@
 import React from 'react';
 import Colors from "../helper/Colors.js";
+import customCursor from "../assets/cursor.png"
 
 const VerticalToggle = ({ page, setPage }) => {
     const handleClick = () => {
@@ -15,9 +16,11 @@ const VerticalToggle = ({ page, setPage }) => {
         : { ...styles.commonBarStyle, ...styles.bottomBarStyle };
 
     return (
-        <div style={styles.containerStyle} onClick={handleClick}>
-            <div style={topStyle}></div>
-        </div>
+        // <div style={{flex: 1, cursor: `url(${customCursor})`,}}>
+            <div style={styles.containerStyle} onClick={handleClick}>
+                <div style={topStyle}></div>
+            </div>
+        // </div>
     );
 };
 
@@ -32,7 +35,8 @@ const styles = {
         top: '50%',
         transform: 'translateY(-50%)',
         margin: '10px',
-        cursor: 'pointer',
+        // cursor: 'pointer',
+        cursor: `url(${customCursor}), pointer`,
         zIndex: 101
     },
     commonBarStyle: {
@@ -42,16 +46,19 @@ const styles = {
         position: 'absolute', // Position it absolutely within the parent
         left: 0,
         transition: 'margin-top 0.3s ease', // Animate the marginTop property
+        cursor: `url(${customCursor})`,
     },
     topBarStyle: {
         borderTopLeftRadius: '5px',
         borderTopRightRadius: '5px',
         marginTop: '0', // Start at the top
+        cursor: `url(${customCursor})`,
     },
     bottomBarStyle: {
         borderBottomLeftRadius: '5px',
         borderBottomRightRadius: '5px',
-        marginTop: 60 // 85 - 25 = 60
+        marginTop: 60, // 85 - 25 = 60
+        cursor: `url(${customCursor})`,
     }
 };
 

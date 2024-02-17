@@ -7,6 +7,7 @@ import { useState, useEffect } from 'react';
 import Me from './components/me/Me'
 import RaisedFooter from './components/RaisedFooter';
 import Placeholder from './components/avatar/Placeholder';
+import customCursor from "./assets/cursor.png"
 
 function App() {
 const isMobile = window.innerWidth < 600;
@@ -65,6 +66,7 @@ const GlobalStyle = createGlobalStyle`
     align-items: center;
     height: 90vh;
     overflow-y: scroll;
+    a[onclick], a:not([name]) { cursor: url(${customCursor}), pointer; }
   }
 `;
 

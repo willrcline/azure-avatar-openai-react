@@ -1,6 +1,7 @@
 import Colors from "../../helper/Colors.js";
 import styled from 'styled-components';
 import { useState } from 'react';
+import customCursor from "../../assets/cursor.png"
 
 const AudioToggle = ({handleAudioToggle, chatState }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -24,7 +25,7 @@ const AudioToggle = ({handleAudioToggle, chatState }) => {
 
   const TextAreaContainer = styled.div`
     height: 1.75rem;
-    cursor: pointer;
+    cursor: url(${customCursor}), pointer;
     padding: 1.5rem;
     display: flex;
     width: 29rem;
@@ -67,7 +68,8 @@ const styles = {
     justifyContent: "center",
   },
   p: {
-    cursor: "pointer",
+    // cursor: "pointer",
+    cursor: `url(${customCursor}), pointer`,
     color: Colors.black,
     marginTop: ".9rem",
     // fontWeight: "bold",

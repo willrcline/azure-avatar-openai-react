@@ -12,6 +12,8 @@ import styled from 'styled-components';
 import Audio from "./Audio";
 import HorizontalToggle from "./HorizontalToggle";
 import InputModeToggle from "./InputModeToggle.jsx";
+import customCursor from "../../assets/cursor.png"
+
 
 const Container = styled.div`
     margin-top: 2rem;

@@ -2,6 +2,7 @@ import React from 'react';
 import Colors from "../../helper/Colors.js";
 import { FaRegKeyboard } from "react-icons/fa";
 import { FaMicrophoneAlt } from "react-icons/fa";
+import customCursor from "../../assets/cursor.png"
 
 const InputModeToggle = ({ inputMode, setInputMode}) => {
     const handleClick = () => {
@@ -29,7 +30,8 @@ const styles = {
         alignItems: 'center',
         justifyContent: 'center',
         flex: 1,
-        cursor: 'pointer',
+        // cursor: 'pointer',
+        cursor: `url(${customCursor}), pointer`,
         // alignSelf: 'flex-start',
     },
 };

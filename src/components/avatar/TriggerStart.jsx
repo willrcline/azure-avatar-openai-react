@@ -56,17 +56,16 @@ const TriggerStart = () => {
                     transform: 'translate(-50%, -50%)', // Corrected line
                     cursor: "pointer", 
                     color: Colors.gray, 
-                    fontSize: 14, 
+                    fontSize: 16, 
                     font: "Inter Variable", 
-                    opacity: .3, 
+                    opacity: .35, 
                     zIndex: 101,
                 }} 
                 onClick={handleStartSession}
                 >
-                    Hi there! Welcome to my homepage.<br/>
                     Wondering if you should hire me or contract me for a project?<br/>
                     Click here to talk to Maye.<br/>
-                    She’s been designed to represent me and showcase my skills and accomplishments in a unique and interactive way.
+                    {/* She’s been designed to represent me and showcase my skills and accomplishments */}
 
                     {/* She's my AI Professional Representative. */}
 

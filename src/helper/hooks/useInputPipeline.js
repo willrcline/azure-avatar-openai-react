@@ -1,5 +1,5 @@
 import { useState, useContext} from 'react';
-import fetchOpenAi from '../../service/fetchOpenAi';
+import fetchOpenAi from '../fetch/fetchOpenAi';
 import { useStartAvatar } from './AvatarVideoControls';
 import { AvatarContext } from "../../components/avatar/Avatar";
 

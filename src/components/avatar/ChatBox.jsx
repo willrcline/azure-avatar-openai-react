@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import * as SpeechSDK from "microsoft-cognitiveservices-speech-sdk";
-import fetchOpenAi from "../../service/fetchOpenAi.js";
+import fetchOpenAi from "../../helper/fetch/fetchOpenAi.js";
 import { assistantPrompt } from "../../helper/promptFactory.js";
 import { useInputPipeline } from "../../helper/hooks/useInputPipeline.js";
 import Colors from "../../helper/Colors.js";

@@ -4,7 +4,7 @@ import { useSpeakSelectedText } from "../../helper/hooks/useSpeakSelectedText.js
 import { useStartSession } from "../../helper/hooks/AvatarVideoControls.js";
 import Colors from "../../helper/Colors.js";
 import { greetingPrompt } from "../../helper/promptFactory.js";
-import fetchOpenAi from "../../service/fetchOpenAi.js";
+import fetchOpenAi from "../../helper/fetch/fetchOpenAi.js";
 
 const Placeholder = ({setPage}) => {
     return (

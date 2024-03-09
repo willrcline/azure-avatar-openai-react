@@ -4,7 +4,7 @@ import { useSpeakSelectedText } from "../../helper/hooks/useSpeakSelectedText.js
 import { useStartSession } from "../../helper/hooks/AvatarVideoControls.js";
 import Colors from "../../helper/Colors.js";
 import { greetingPrompt } from "../../helper/promptFactory.js";
-import fetchOpenAi from "../../service/fetchOpenAi.js";
+import fetchOpenAi from "../../helper/fetch/fetchOpenAi.js";
 const TriggerStart = () => {
     const [clicked, setClicked] = useState(false);
     const {sessionStarted, setChatState} = useContext(AvatarContext);
@@ -32,6 +32,7 @@ const TriggerStart = () => {
             {"role": "system", "content": greetingPrompt()},
         ];
         var response = await fetchOpenAi({chatHistory: prompt});
+        console.log("TriggerStart fetchGreetingText response___", response)
         return response;
     }
 

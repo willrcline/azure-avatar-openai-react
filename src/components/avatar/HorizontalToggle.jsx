@@ -42,7 +42,7 @@ const styles = {
     smallBar: {
         height: '100%',
         width: '10px',
-        backgroundColor: Colors.darkGray,
+        backgroundColor: Colors.gray2,
         position: 'absolute',
         top: 0,
         transition: 'margin-left 0.3s ease',

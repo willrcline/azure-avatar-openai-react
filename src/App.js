@@ -15,7 +15,7 @@ const [page, setPage] = useState((isMobile) ? 1 : 0);
 useEffect(() => {
   const handleWheel = (event) => {
 
-    const isDescendantOrDiv = event.target.closest('.sc-kFCroH.dYRMtt');
+    const isDescendantOrDiv = event.target.closest('.scrollableContent');
     if (isDescendantOrDiv) {
       // console.log('app.js isDescendantOrDiv___', isDescendantOrDiv);
       return; // Don't prevent default if the target is a descendant or is the div with class "sc-kFCroH dYRMtt"

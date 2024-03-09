@@ -29,7 +29,7 @@ const StyledButton = styled.button`
   padding: 4px;
   margin: 1px;
   font-size: 14px;
-  color: ${Colors.warmBlack};
+  color: ${Colors.almostBlack};
   cursor: pointer;
   border-radius: 10px;
   text-align: left;

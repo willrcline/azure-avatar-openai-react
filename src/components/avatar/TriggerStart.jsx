@@ -50,24 +50,37 @@ const TriggerStart = () => {
                 }}>
                     <p style={{
                         color: Colors.black,
-                        fontSize: 20,
-                        lineHeight: "1.5rem",
-                        font: "Inter Variable",
+                        fontSize: 30,
+                        // lineHeight: "1.5rem",
+                        fontFamily: 'Inter',
+        fontWeight: 500,
                         textAlign: "justify",
-                        fontWeight: 700,
+                        // fontWeight: 700,
                         // opacity: .35,
                         marginBottom: "2.5rem",
                     }}> 
-                    Wondering if you should hire me or contract me for a project?<br/><br/>
-                    This simulation has been designed to represent me and showcase my skills and accomplishments in a unique and interactive way.
-                        
+                    Wondering if you should hire me or contract me for a project?
+                    </p>
+                    <p style={{
+                        color: Colors.black,
+                        fontSize: 20,
+                        // lineHeight: "1.5rem",
+                        fontFamily: 'Inter',
+        fontWeight: 400,
+                        textAlign: "justify",
+                        // fontWeight: 500,
+                        // opacity: .35,
+                        marginBottom: "2.5rem",
+                    }}> 
+                    This simulation has been designed to represent me and showcase my skills and accomplishments in a unique and interactive way. 
                     </p>
                     <p 
                     style = {{
                         cursor: "pointer", 
-                        color: Colors.warmBlack, 
+                        color: Colors.darkGray, 
                         fontSize: 16, 
-                        font: "Inter Variable", 
+                        fontFamily: 'Inter',
+        fontWeight: 400, 
                         // opacity: isHovered ? 0.5 : 0.35, 
                         zIndex: 101,
                     }} 

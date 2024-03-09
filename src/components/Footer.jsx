@@ -3,6 +3,7 @@ import bottomShadow from "../assets/bottom-shadow.svg";
 import plantShadow from "../assets/plant-shadow.chunk.svg";
 import plantImage from "../assets/plant.chunk.png";
 import styled from 'styled-components';
+import Colors from '../helper/Colors.js';
 
 const Container = styled.div`
 position: fixed;
@@ -26,10 +27,31 @@ width: 115px;
 }
 `;
 
+const Copyright = styled.div`
+position: absolute;
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+color: ${Colors.gray2};
+left: 50%;
+transform: translateX(-50%);
+bottom: 8px;
+// top: 2px;
+// Media query for screens smaller than 768px
+@media (max-width: 600px) {
+    
+}
+`;
+
 const Footer = () => {
 
     return (
         <Container>
+            <Copyright>
+                <span style={{fontSize: 25, font: "Inter Variable",}}>&copy;&nbsp;</span>
+                <span style={{font: "Inter Variable"}}>WillRCline.com</span>
+            </Copyright>
             <img style={{width:"100%"}} src={bottomShadow} alt="Image 2" />
             <Plant src={plantImage} alt="Image 1" />
         </Container>

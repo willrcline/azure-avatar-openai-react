@@ -102,7 +102,7 @@ const H3 = styled.h3`
         font-size: 20px; 
     }
 `; 
-
+ 
 const Bio = () => {
     return (
         <Container>

@@ -38,7 +38,7 @@ const styles = {
     commonBarStyle: {
         width: '100%',
         height: '25px',
-        backgroundColor: Colors.darkGray,
+        backgroundColor: Colors.gray2,
         position: 'absolute', // Position it absolutely within the parent
         left: 0,
         transition: 'margin-top 0.3s ease', // Animate the marginTop property

@@ -13,10 +13,10 @@ const InputModeToggle = ({ inputMode, setInputMode}) => {
     return (
         <div style={styles.container} onClick={handleClick}>
             {(inputMode === "voice") &&  
-                <FaRegKeyboard size={25} color={Colors.warmBlack}/>
+                <FaRegKeyboard size={25} color={Colors.almostBlack}/>
             }
             {(inputMode === "text") &&  
-                <FaMicrophoneAlt size={25} color={Colors.warmBlack}/>
+                <FaMicrophoneAlt size={25} color={Colors.almostBlack}/>
             }
         </div>
     );

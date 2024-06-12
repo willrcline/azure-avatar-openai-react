@@ -5,8 +5,7 @@ import { useStartSession } from "../../helper/hooks/AvatarVideoControls.js";
 import Colors from "../../helper/Colors.js";
 import { greetingPrompt } from "../../helper/promptFactory.js";
 import fetchOpenAi from "../../helper/fetch/fetchOpenAi.js";
-const TriggerStart = () => {
-    const [clicked, setClicked] = useState(false);
+const TriggerStart = ({startBtnClicked, setStartBtnClicked}) => {
     const {sessionStarted, setChatState} = useContext(AvatarContext);
     const speakText = useSpeakSelectedText();
     const startSession = useStartSession()
@@ -20,7 +19,7 @@ const TriggerStart = () => {
     }, [sessionStarted]);
 
     const handleStartSession = async () => {
-        setClicked(true);
+        setStartBtnClicked(true);
         startSession();
         setChatState("loading");
         var text = await fetchGreetingText();
@@ -38,7 +37,7 @@ const TriggerStart = () => {
 
     return (
         <>
-            {!clicked && (
+            {!startBtnClicked && (
                 <div 
                 style={{
                     position: 'fixed',
